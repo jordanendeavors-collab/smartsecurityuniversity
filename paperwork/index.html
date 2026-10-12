@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AAA Onsite Paperwork</title>
+<meta name="theme-color" content="#0B1F3A">
+<script>
+window.addEventListener('error', function (e) {
+  try {
+    var d = document.getElementById('ddErrBar');
+    if (!d) { d = document.createElement('div'); d.id = 'ddErrBar';
+      d.style.cssText = 'position:fixed;left:0;right:0;bottom:0;z-index:99999;background:#CC0000;color:#fff;' +
+        'font:12px/1.45 Arial,sans-serif;padding:9px 12px';
+      d.onclick = function () { d.remove(); };
+      (document.body || document.documentElement).appendChild(d); }
+    d.textContent = 'Tool error \u2014 screenshot this: ' + (e.message || '') + '  [line ' + (e.lineno || '?') + ']';
+  } catch (_) {}
+}, true);
+</script>
+<style>
+:root{
+  --navy:#0B1F3A; --navy-d:#08182E; --gold:#C8A951; --red:#CC0000; --green:#177245;
+  --bg:#F4F6F9; --bg2:#FFFFFF; --card:#FFFFFF; --brd:#D3D9E2;
+  --t1:#12181F; --t2:#45525F; --t3:#6C7A8A;
+  --hdr:Cambria,"Palatino Linotype",Georgia,serif;
+  --body:Calibri,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#0F1826; --bg2:#1A2438; --card:#232E45; --brd:#33405C;
+  --t1:#F1F5F9; --t2:#B8C2D9; --t3:#7A88A6; --gold:#D9BE6A; --red:#FF4646;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--t1);font-family:var(--body);font-size:16px;line-height:1.55}
+h1,h2,h3{font-family:var(--hdr);margin:0 0 .35em;line-height:1.22}
+.app{display:none;flex-direction:column;min-height:100vh}
+.app.on{display:flex}
+.tb{background:var(--navy-d);border-bottom:2px solid var(--gold);padding:10px 12px;display:flex;gap:8px;align-items:center;position:sticky;top:0;z-index:30}
+.tb .tile{width:38px;height:38px;flex:0 0 38px;border-radius:8px;background:var(--red);border:1.5px solid var(--gold);
+  display:grid;place-items:center;font-family:var(--hdr);font-weight:700;color:#fff;font-size:.72rem}
+.tb h1{font-size:.95rem;color:#fff;margin:0;font-family:var(--body);font-weight:700}
+.tb .s{font-size:.66rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.tb-btn{margin-left:auto;background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:7px;
+  padding:7px 10px;font-size:.72rem;font-family:var(--body);cursor:pointer;letter-spacing:.6px}
+.tb-btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy);font-weight:700;margin-left:0}
+.content{max-width:820px;margin:0 auto;padding:14px 14px 96px;width:100%}
+.sec{background:var(--card);border:1px solid var(--brd);border-radius:13px;padding:15px;margin-bottom:13px}
+.sec-hdr{display:flex;gap:9px;align-items:center;border-bottom:1px solid var(--brd);padding-bottom:8px;margin-bottom:12px}
+.badge{font-size:.6rem;letter-spacing:1.4px;font-weight:700;border:1px solid var(--gold);color:var(--gold);
+  border-radius:4px;padding:2px 7px}
+.sec h3{margin:0;font-size:1.02rem}
+.fld{margin-bottom:10px}
+.fld label{display:block;font-size:.7rem;letter-spacing:.8px;text-transform:uppercase;color:var(--t3);font-weight:700;margin-bottom:4px}
+input[type=text],input[type=tel],input[type=date],input[type=time],select,textarea{
+  width:100%;padding:11px;border:1px solid var(--brd);border-radius:9px;background:var(--bg2);
+  color:var(--t1);font-family:var(--body);font-size:16px}
+textarea{min-height:74px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--gold);outline-offset:1px}
+.g2{display:grid;grid-template-columns:1fr;gap:0 11px}
+.g3{display:grid;grid-template-columns:1fr 1fr;gap:0 11px}
+@media(min-width:640px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}}
+.opt{display:flex;gap:9px;align-items:flex-start;padding:10px;border:1px solid var(--brd);border-radius:9px;
+  background:var(--bg2);margin-bottom:6px;cursor:pointer;font-size:.93rem}
+.opt input{margin:3px 0 0;width:18px;height:18px;flex:0 0 auto;accent-color:var(--gold)}
+.opt small{display:block;color:var(--t3);font-size:.76rem;margin-top:2px}
+.note{border-left:4px solid var(--gold);background:var(--bg2);border-radius:0 9px 9px 0;padding:11px 13px;
+  margin:0 0 13px;font-size:.86rem;color:var(--t2)}
+.note.red{border-left-color:var(--red)}
+.note b{color:var(--t1)}
+.note .nh{display:block;font-size:.62rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;
+  color:var(--gold);margin-bottom:4px}
+.note.red .nh{color:var(--red)}
+.say{display:block;font-weight:700;font-size:1rem;color:var(--t1);margin:6px 0}
+.btn{display:block;width:100%;padding:14px;border-radius:11px;border:1px solid var(--navy);background:var(--navy);
+  color:#fff;font-family:var(--body);font-weight:700;font-size:1rem;cursor:pointer;margin-top:10px}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.btn.ghost{background:transparent;color:var(--t1);border-color:var(--brd)}
+.btn.red{background:var(--red);border-color:var(--red);color:#fff}
+.eqrow{display:grid;grid-template-columns:64px 1fr 1fr;gap:8px;margin-bottom:7px}
+.eqrow input{padding:9px}
+.pill{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;
+  border:1px solid var(--brd);border-radius:99px;padding:2px 9px;color:var(--t3)}
+.pill.ok{border-color:var(--green);color:var(--green)}
+.pill.warn{border-color:var(--red);color:var(--red)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:var(--navy);color:#fff;
+  padding:11px 15px;border-radius:10px;border:1px solid var(--gold);font-size:.86rem;z-index:99;max-width:90vw}
+footer.legal{max-width:820px;margin:0 auto;padding:14px;color:var(--t3);font-size:.72rem;border-top:1px solid var(--brd)}
+.hidden{display:none!important}
+@media print{ #ddAuth,#ddSessChip,#ddKeyChip,.tb,.btn{display:none!important} }
+/* ---- DanDDee login portal. Brand here is DanDDee; everything behind it is AAA. ---- */
+#ddAuth{position:fixed;inset:0;z-index:9999;background:#12203A;
+  background-image:radial-gradient(ellipse at 50% -12%, #223C6B 0%, #12203A 58%, #0A1426 100%);
+  display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto;
+  font-family:Calibri,"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:#EEF1F7}
+#ddAuth.hidden{display:none}
+.dda-box{width:100%;max-width:400px;text-align:center}
+.dda-mark{width:84px;height:84px;margin:0 auto 12px}
+.dda-mark svg{width:84px;height:84px;display:block}
+.dda-wm{font-family:Cambria,Georgia,serif;font-weight:700;font-size:1.85rem;color:#fff;margin:0}
+.dda-tl{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:#C9A648;margin:2px 0 4px}
+.dda-rule{height:3px;width:52px;background:#CC0000;border-radius:2px;margin:11px auto 14px}
+.dda-tool{font-size:.92rem;color:#C3CDDE;margin:0 0 16px}
+.dda-tool b{color:#fff}
+.dda-card{background:rgba(255,255,255,.055);border:1px solid rgba(201,166,72,.34);
+  border-radius:16px;padding:17px;text-align:left}
+.dda-lab{display:block;font-size:.72rem;letter-spacing:.8px;text-transform:uppercase;
+  color:#C9A648;font-weight:700;margin:0 0 5px}
+.dda-in{width:100%;padding:13px;border-radius:10px;border:1px solid rgba(201,166,72,.45);
+  background:rgba(8,16,30,.72);color:#fff;font-size:16px;font-family:inherit;margin-bottom:11px}
+.dda-in:focus{outline:2px solid #C9A648;outline-offset:1px}
+.dda-btn{width:100%;padding:14px;border-radius:11px;border:1px solid #CC0000;background:#CC0000;
+  color:#fff;font-family:inherit;font-weight:700;font-size:1rem;cursor:pointer}
+.dda-btn:disabled{opacity:.45;cursor:not-allowed}
+.dda-btn.alt{background:transparent;border-color:rgba(201,166,72,.55);color:#C9A648;margin-top:9px;font-size:.88rem;padding:11px}
+.dda-msg{min-height:34px;margin-top:10px;font-size:.84rem;color:#FF8A8A;line-height:1.4}
+.dda-msg.ok{color:#8FD9AE}
+.dda-msg .code{display:inline-block;font-family:Consolas,monospace;font-size:.72rem;
+  border:1px solid rgba(255,255,255,.25);border-radius:4px;padding:0 5px;margin-right:6px;color:#C3CDDE}
+.dda-foot{margin-top:15px;font-size:.71rem;color:#8FA0BC;line-height:1.5}
+.dda-foot b{color:#C9A648}
+.dda-meta{margin-top:9px;font-size:.66rem;color:#6F80A0;letter-spacing:.4px}
+#ddSessChip{position:fixed;left:10px;bottom:10px;z-index:9998;background:#0B1F3A;color:#fff;
+  border:1px solid #C8A951;border-radius:99px;padding:7px 13px;
+  font:700 10px/1 Calibri,Arial,sans-serif;letter-spacing:1.2px;opacity:.6;cursor:pointer}
+#ddSessChip:hover{opacity:1}
+@media (max-width:420px){.dda-mark,.dda-mark svg{width:68px;height:68px}.dda-wm{font-size:1.55rem}}
+/* ---- added: note templates ---- */
+.ddnote-btn{display:inline-block;margin-top:6px;background:transparent;border:1px dashed var(--brd,#D3D9E2);
+  color:var(--t2,#45525F);border-radius:8px;padding:7px 11px;font-size:11px;font-family:inherit;
+  letter-spacing:.6px;cursor:pointer}
+.ddnote-btn:hover{border-style:solid;color:var(--t1,#12181F)}
+.ddnote{margin-top:8px;border:1px solid var(--brd,#D3D9E2);border-radius:10px;
+  background:var(--bg2,#fff);overflow:hidden}
+.ddnote-q{width:100%;padding:11px;border:0;border-bottom:1px solid var(--brd,#D3D9E2);
+  background:var(--card,#fff);color:var(--t1,#12181F);font-size:16px;font-family:inherit}
+.ddnote-q:focus{outline:2px solid var(--gold,#C8A951);outline-offset:-2px}
+.ddnote-list{max-height:260px;overflow-y:auto}
+.ddnote-g{font-size:9px;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;
+  color:var(--gold,#C8A951);padding:9px 11px 4px}
+.ddnote-i{display:block;width:100%;text-align:left;background:transparent;border:0;
+  border-top:1px solid var(--brd,#D3D9E2);padding:10px 11px;font-size:13px;line-height:1.45;
+  color:var(--t1,#12181F);font-family:inherit;cursor:pointer}
+.ddnote-i:hover{background:var(--card,#EEF1F6)}
+.ddnote-none{padding:14px 11px;font-size:12px;color:var(--t3,#6C7A8A)}
+.ddnote-foot{padding:9px 11px;font-size:10.5px;line-height:1.45;color:var(--t3,#6C7A8A);
+  border-top:1px solid var(--brd,#D3D9E2)}
+@media print{.ddnote,.ddnote-btn{display:none !important}}
+
+
+/* ---- added: signature pads and location stamp ---- */
+.sigwrap{margin:10px 0 4px}
+.sigwrap .sighd{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.sigwrap .sighd label{margin:0}
+.sigpad{width:100%;height:150px;border:1px dashed var(--brd);border-radius:10px;background:#fff;
+  touch-action:none;display:block}
+.sighint{font-size:10.5px;color:var(--t3);margin:4px 0 0}
+.sigbtn{background:transparent;border:1px solid var(--brd);color:var(--t2);border-radius:7px;
+  padding:6px 10px;font-size:10.5px;font-family:inherit;cursor:pointer;margin-top:6px}
+#geoOut{font-size:11.5px;color:var(--t2);margin-top:7px;line-height:1.5}
+@media print{.sigpad,.sigbtn{display:none !important}}
+
+</style>
+</head>
+<body>
+
+<div id="ddAuth" role="dialog" aria-modal="true" aria-label="DanDDee login">
+  <div class="dda-box">
+    <div class="dda-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="DanDDee"><title>DanDDee</title><line x1="95.00" y1="80.00" x2="130.00" y2="80.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(130.00 80.00) rotate(90.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="92.99" y1="87.50" x2="123.30" y2="105.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(123.30 105.00) rotate(120.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="87.50" y1="92.99" x2="105.00" y2="123.30" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(105.00 123.30) rotate(150.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="80.00" y1="95.00" x2="80.00" y2="130.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(80.00 130.00) rotate(180.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="72.50" y1="92.99" x2="55.00" y2="123.30" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(55.00 123.30) rotate(210.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="67.01" y1="87.50" x2="36.70" y2="105.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(36.70 105.00) rotate(240.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="65.00" y1="80.00" x2="30.00" y2="80.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(30.00 80.00) rotate(270.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="67.01" y1="72.50" x2="36.70" y2="55.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(36.70 55.00) rotate(300.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="72.50" y1="67.01" x2="55.00" y2="36.70" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(55.00 36.70) rotate(330.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><line x1="80.00" y1="65.00" x2="80.00" y2="30.00" stroke="#C9A648" stroke-width="7" stroke-linecap="round"/><g transform="translate(80.00 30.00) rotate(360.00) scale(0.85)"><path d="M0 0 c -7.6 -8.6 -11.2 -13.6 -11.2 -19.4 a11.2 11.2 0 0 1 22.4 0 c 0 5.8 -3.6 10.8 -11.2 19.4 z" fill="#ffffff"/><circle cx="0" cy="-20" r="4.2" fill="#1F3864" opacity="0.92"/></g><circle cx="80.00" cy="80.00" r="13" fill="#C9A648"/></svg></div>
+    <p class="dda-wm">DanDDee</p>
+    <div class="dda-tl">One head. A hundred landings.</div>
+    <div class="dda-rule"></div>
+    <p class="dda-tool">Sign in to <b>Onsite Paperwork</b></p>
+    <div class="dda-card">
+      <label class="dda-lab" for="ddAuthUser">User ID</label>
+      <input class="dda-in" type="text" id="ddAuthUser" autocomplete="username"
+             autocapitalize="none" spellcheck="false" placeholder="first.last">
+      <label class="dda-lab" for="ddAuthPass">Passphrase</label>
+      <input class="dda-in" type="password" id="ddAuthPass" autocomplete="current-password"
+             autocapitalize="none" spellcheck="false" placeholder="Your passphrase">
+      <button class="dda-btn" id="ddAuthGo" type="button">Sign in</button>
+      <button class="dda-btn alt hidden" id="ddAuthKey" type="button">Use device key</button>
+      <div class="dda-msg" id="ddAuthMsg" role="status" aria-live="polite"></div>
+    </div>
+    <div class="dda-foot">
+      <b>DanDDee</b> is the sign-in for AAA Smart Security field tools. Accounts are issued per person by
+      <b>National Field Operations</b>. Never shared, never texted, never emailed. Every sign-in and every
+      failure is logged with a time, a user and an error code.
+      <br><br>This portal controls entry, not permissions. It is not a substitute for your device lock
+      or for the sharing settings on this tool.
+    </div>
+    <div class="dda-meta" id="ddAuthMeta"></div>
+  </div>
+</div>
+
+<div class="app" id="app">
+  <div class="tb">
+    <div class="tile">AAA</div>
+    <div><h1>Onsite Paperwork</h1><div class="s">Installing Dealer &middot; AAA Smart Home Security</div></div>
+    <button class="tb-btn" onclick="ppwTheme()" id="ppwThemeBtn">DARK</button>
+  </div>
+
+  <div class="content">
+
+    <div class="note"><span class="nh">Open here. Every time.</span>
+      <span class="say">&ldquo;Are you safe? Are you in a secure location? Is everything okay?&rdquo;</span>
+      Wellbeing before business. Never open with billing, an account, or a price.</div>
+
+    <div class="note red"><span class="nh">This record is not saved</span>
+      Nothing typed here is written to this device. It lives in memory until you print or send it, then it is
+      gone when you close the page. That is deliberate — member details do not sit in a browser overnight.
+      <b>Print or send before you close.</b></div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">MEMBER</span><h3>Who and where</h3></div>
+      <div class="note"><span class="nh">What goes here, and what never does</span>
+        Name and service address only, because the member&rsquo;s copy is useless without them.
+        <b>Never enter an account number, a panel account code, a passcode, a duress word, a date of birth,
+        a social security number, or any payment detail.</b> Those belong in the system of record, not on a
+        page you are about to print and hand over.</div>
+      <div class="g2">
+        <div class="fld"><label>Member name</label><input id="p_name" type="text" placeholder="As it appears on the work order"></div>
+        <div class="fld"><label>Phone at the premises</label><input id="p_phone" type="tel" placeholder="Best number on site today"></div>
+      </div>
+      <div class="fld"><label>Service address</label><input id="p_addr" type="text" placeholder="Street address of the work"></div>
+      <div class="g3">
+        <div class="fld"><label>City</label><input id="p_city" type="text"></div>
+        <div class="fld"><label>State</label><input id="p_state" type="text" placeholder="AZ"></div>
+        <div class="fld"><label>Work order reference</label><input id="p_wo" type="text" placeholder="From dispatch"></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">VISIT</span><h3>The visit</h3></div>
+      <div class="g3">
+        <div class="fld"><label>Date</label><input id="p_date" type="date"></div>
+        <div class="fld"><label>Arrived</label><input id="p_in" type="time"></div>
+        <div class="fld"><label>Departed</label><input id="p_out" type="time"></div>
+      </div>
+      <div class="g2">
+        <div class="fld"><label>Installing technician</label><input id="p_tech" type="text" placeholder="Name or badge"></div>
+        <div class="fld"><label>Installing dealer (DLR #)</label><input id="p_dlr" type="text" placeholder="DLR-0000"></div>
+      </div>
+      <div class="fld"><label>Type of work</label><select id="p_type">
+        <option value="">Select&hellip;</option>
+        <option>New installation</option><option>System takeover</option><option>Add-on / expansion</option>
+        <option>Service call</option><option>Battery or device replacement</option>
+        <option>Panel swap</option><option>Inspection / test</option><option>Training visit only</option>
+      </select></div>
+      <div class="fld"><label>Reason for the visit, in the member&rsquo;s words</label>
+        <textarea id="p_ask" placeholder="Why you were there, in their words. Not what you did."></textarea></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">INSTALLER</span><h3>Installing dealer</h3></div>
+      <div class="note"><span class="nh">This is the dealer&rsquo;s record, not the sales record</span>
+        The sale, the scope and the price were settled before today. This page records <b>who installed it,
+        what went in, and that it works</b>. Anything about scope or price that comes up on site gets routed,
+        not renegotiated at the door.</div>
+      <label class="opt"><input type="checkbox" id="i_lic"><span>Licence or registration current for this state and this work
+        <small>If you are unsure, stop and route it to Compliance. Never interpret scope or reciprocity yourself.</small></span></label>
+      <label class="opt"><input type="checkbox" id="i_card"><span>Alarm agent card / work card carried where the jurisdiction requires one</span></label>
+      <label class="opt"><input type="checkbox" id="i_id"><span>Photo identification shown and vehicle identified on arrival</span></label>
+      <label class="opt"><input type="checkbox" id="i_sub"><span>Subcontracted labour used on this job</span></label>
+      <div class="g2">
+        <div class="fld"><label>Subcontractor DLR #, if used</label><input id="p_subdlr" type="text" placeholder="DLR-0000, or blank"></div>
+        <div class="fld"><label>Permit / registration responsibility</label><select id="p_permresp">
+          <option value="">Select&hellip;</option>
+          <option>Dealer filed it</option><option>AAA filed it</option><option>Member files it</option>
+          <option>Not required in this jurisdiction</option><option>Pending &mdash; not yet filed</option>
+          <option>Unknown &mdash; flagged below</option>
+        </select></div>
+      </div>
+      <label class="opt"><input type="checkbox" id="i_mon"><span>Monitoring account activated and confirmed with the monitoring centre
+        <small>Confirm activation. Never write the account number or panel code on this page.</small></span></label>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">WORK</span><h3>Equipment and work completed</h3></div>
+      <p class="note" style="margin-bottom:10px"><span class="nh">How to fill this</span>
+        Quantity, what it is in plain language, and where it went. No part numbers on the member copy
+        &mdash; they do not read them and a wrong one causes a service call.</p>
+      <div id="eqRows"></div>
+      <button class="btn ghost" onclick="ppwAddRow()" type="button">+ Add a line</button>
+      <div class="fld" style="margin-top:12px"><label>Work performed, in plain language</label>
+        <textarea id="p_work" placeholder="What you actually did, so the next technician understands the site."></textarea></div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">TEST</span><h3>System test</h3></div>
+      <p class="note" style="margin-bottom:10px">Tick only what you actually tested with the member present.
+        An untested system handed over is a false alarm waiting to happen.</p>
+      <label class="opt"><input type="checkbox" id="t_comm"><span>Communication path tested to the monitoring centre
+        <small>Confirmed a signal was received, not just that the panel said it sent one</small></span></label>
+      <label class="opt"><input type="checkbox" id="t_walk"><span>Walk test completed on every sensor installed</span></label>
+      <label class="opt"><input type="checkbox" id="t_siren"><span>Siren and sounders verified audible</span></label>
+      <label class="opt"><input type="checkbox" id="t_batt"><span>Backup battery present and holding</span></label>
+      <label class="opt"><input type="checkbox" id="t_app"><span>App installed and a live event seen on the member&rsquo;s phone</span></label>
+      <label class="opt"><input type="checkbox" id="t_place"><span>Monitoring placed back on service before departure
+        <small>If it was put on test, take it off test. This is the most common miss.</small></span></label>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">EXPLAIN</span><h3>What was explained to the member</h3></div>
+      <label class="opt"><input type="checkbox" id="e_arm"><span>Arming and disarming, including any delay times</span></label>
+      <label class="opt"><input type="checkbox" id="e_app"><span>How to use the app and who else can be given access</span></label>
+      <label class="opt"><input type="checkbox" id="e_false"><span>How to avoid a false alarm, and what to do if one happens
+        <small>Ordinance fines land on the member, not on us. Say it plainly.</small></span></label>
+      <label class="opt"><input type="checkbox" id="e_code"><span>How to change their own codes
+        <small>Shown, never recorded. No code or duress word is written on this page or spoken over the phone.</small></span></label>
+      <label class="opt"><input type="checkbox" id="e_test"><span>How to put the system on test before working on it themselves</span></label>
+      <label class="opt"><input type="checkbox" id="e_support"><span>Who to call, and what to have ready when they do</span></label>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">PPW</span><h3>Paperwork handled on site</h3></div>
+      <p class="note red" style="margin-bottom:10px"><span class="nh">Records only</span>
+        This section records <b>which documents were handled</b>. It does not reproduce any of them and it is
+        not the agreement. Terms come from the executed agreement, prepared and reviewed separately.
+        Any question about wording routes to legal review.</p>
+      <div id="ppwRows"></div>
+      <div class="fld" style="margin-top:10px"><label>Permit or alarm registration number, if one applies</label>
+        <input id="p_permit" type="text" placeholder="Leave blank if none. Never guess one."></div>
+      <label class="opt"><input type="checkbox" id="p_ord_flag"><span><b>Flag:</b> something here reads as a permit,
+        monitoring or false-alarm ordinance issue
+        <small>Tick it and say so today. Do not work around it. The AHJ has final say.</small></span></label>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">OPEN</span><h3>Anything left open</h3></div>
+      <div class="fld"><label>What is not finished</label>
+        <textarea id="p_open" placeholder="Blank is fine if the job is complete. A guess is not."></textarea></div>
+      <div class="g3">
+        <div class="fld"><label>Who owns it</label><input id="p_owner" type="text" placeholder="Role or DLR #"></div>
+        <div class="fld"><label>By when</label><input id="p_due" type="date"></div>
+        <div class="fld"><label>Parts case number</label><input id="p_case" type="text" placeholder="No parts order without one"></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">SIGN</span><h3>Signature and location</h3></div>
+      <div class="note red"><span class="nh">Say this before they sign</span>
+        Tell the member you are recording a signature on this device, and that the device&rsquo;s location
+        and the time are recorded with it. If they would rather not, print the page and have them sign on
+        paper &mdash; that is still a valid option and it stays one.</div>
+
+      <div class="sigwrap">
+        <div class="sighd"><label>Member signature</label><span class="pill" id="sigStateM">Not signed</span></div>
+        <canvas class="sigpad" id="sigMember"></canvas>
+        <button class="sigbtn" type="button" onclick="ppwClearSig('member')">Clear</button>
+        <p class="sighint">Finger or stylus. Hand them the device rather than signing for them.</p>
+      </div>
+
+      <div class="sigwrap">
+        <div class="sighd"><label>Technician signature</label><span class="pill" id="sigStateT">Not signed</span></div>
+        <canvas class="sigpad" id="sigTech"></canvas>
+        <button class="sigbtn" type="button" onclick="ppwClearSig('tech')">Clear</button>
+      </div>
+
+      <div class="fld" style="margin-top:12px"><label>Location stamp</label>
+        <button class="btn ghost" type="button" onclick="ppwGeo()">&#128205; Record this device&rsquo;s location</button>
+        <button class="sigbtn" type="button" onclick="ppwGeoClear()">Clear location</button>
+        <div id="geoOut">No location recorded.</div>
+      </div>
+
+      <div class="note"><span class="nh">What the stamp is, and is not</span>
+        It records where the <b>device</b> was, to the accuracy the phone reports, at the moment it was taken.
+        It is not proof of who signed, not proof the member was present, and not a verification of the service
+        address. The printed page says so in those words.</div>
+    </div>
+
+    <div class="sec">
+      <div class="sec-hdr"><span class="badge">SIGN</span><h3>Member copy</h3></div>
+      <div class="g2">
+        <div class="fld"><label>Signed by, printed name</label><input id="p_sig" type="text"></div>
+        <div class="fld"><label>Relationship to the premises</label><input id="p_rel" type="text" placeholder="Homeowner, tenant, manager"></div>
+      </div>
+      <div class="note red" id="legalWarn"><span class="nh">Legal text not loaded</span>The approved terms block is empty, so the member copy will print without terms. Paste the approved wording into <b>LEGAL_BLOCKS</b> at the top of the script before this goes to a member.</div><button class="btn gold" onclick="ppwPrint('print')" type="button">&#128438; PRINT NOW — MEMBER ONE-PAGER</button><button class="btn ghost" onclick="ppwPrint()" type="button">&#8595; Save / send instead</button>
+      <p class="note" style="margin-top:10px"><span class="nh">Printing</span>
+        <b>Print Now</b> goes straight to the printer on a laptop. On a phone the browser will not open a print dialog, so it hands you the share sheet &mdash; choose <b>Print</b> there for the wireless printer. Same two taps either way.
+        One page. Leave it with them, and scan the signed copy back to the work order.</p>
+      <button class="btn ghost" onclick="ppwCopy()" type="button">Copy as text</button>
+      <button class="btn red" onclick="ppwClear()" type="button">Clear this record</button>
+    </div>
+
+  </div>
+
+  <footer class="legal">
+    <div><b>AAA Smart Home Security</b> &middot; Onsite Paperwork &middot; offline, single file, nothing saved to this device.</div>
+    <div style="margin-top:6px">This record is a service record. It is not the agreement and not a price quote.
+      Licensing routes to Compliance. Contract language routes to legal review. Anything reading as a permit,
+      monitoring or false-alarm ordinance deviation is flagged the same day. Where any code or ordinance is
+      referenced, the Authority Having Jurisdiction has final say. No account numbers, panel codes, passcodes
+      or payment details are recorded here.</div>
+  </footer>
+</div>
+
+<script>
+function DDPdf(meta) {
+  var W = 612, H = 792, M = 54;
+  var HW = [278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,
+            556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,
+            1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,
+            667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,
+            333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,
+            556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+  var BW = [278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,
+            556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,
+            975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,
+            667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,
+            333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,
+            611,611,389,556,333,611,556,778,556,556,500,389,280,389,584];
+
+  var NAVY = [0.043, 0.122, 0.227];
+  var GOLD = [0.541, 0.427, 0.140];
+  var RED  = [0.80, 0.0, 0.0];
+  var GREY = [0.35, 0.38, 0.42];
+  var LINE = [0.78, 0.80, 0.83];
+  var BLACK = [0, 0, 0];
+
+  var pages = [], cur = null, y = 0, imgs = [], self = this;
+  meta = meta || {};
+
+  function ascii(s) {
+    return String(s == null ? '' : s)
+      .replace(/[\u2018\u2019\u201B]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"')
+      .replace(/[\u2013\u2014]/g, '-')
+      .replace(/[\u2022]/g, '-')
+      .replace(/\u00b7/g, '-')
+      .replace(/\u2026/g, '...')
+      .replace(/\u00a0/g, ' ')
+      .replace(/[^\x20-\x7E\n]/g, '');
+  }
+  function esc(s) { return ascii(s).replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)'); }
+  function wid(s, size, bold) {
+    s = ascii(s); var t = 0, tbl = bold ? BW : HW;
+    for (var i = 0; i < s.length; i++) {
+      var c = s.charCodeAt(i) - 32;
+      t += (c >= 0 && c < tbl.length) ? tbl[c] : 500;
+    }
+    return t * size / 1000;
+  }
+  function wrap(s, maxw, size, bold) {
+    s = ascii(s);
+    var out = [];
+    s.split('\n').forEach(function (para) {
+      var words = para.split(/\s+/), line = '';
+      words.forEach(function (w) {
+        var test = line ? line + ' ' + w : w;
+        if (wid(test, size, bold) > maxw && line) { out.push(line); line = w; }
+        else line = test;
+      });
+      out.push(line);
+    });
+    return out;
+  }
+  function op(s) { cur.ops.push(s); }
+  function col(c) { return c[0].toFixed(3) + ' ' + c[1].toFixed(3) + ' ' + c[2].toFixed(3); }
+
+  function pageHeader() {
+    op(col(NAVY) + ' rg 0 ' + (H - 30) + ' ' + W + ' 30 re f');
+    op('BT /F2 8 Tf ' + col([1, 1, 1]) + ' rg 1 0 0 1 ' + M + ' ' + (H - 20) + ' Tm (' +
+       esc(meta.brand || 'AAA SMART BUSINESS SECURITY') + ') Tj ET');
+    var rt = esc(meta.docType || 'COMMERCIAL SALES INTAKE');
+    op('BT /F1 8 Tf ' + col(GOLD) + ' rg 1 0 0 1 ' + (W - M - wid(rt, 8, false)) + ' ' + (H - 20) + ' Tm (' + rt + ') Tj ET');
+    y = H - 30 - 26;
+  }
+  function pageFooter(n, total) {
+    op(col(LINE) + ' RG 0.6 w ' + M + ' 44 m ' + (W - M) + ' 44 l S');
+    var left = esc((meta.prospect || '') + (meta.date ? '   ' + meta.date : ''));
+    op('BT /F1 7.5 Tf ' + col(GREY) + ' rg 1 0 0 1 ' + M + ' 32 Tm (' + left + ') Tj ET');
+    var r = 'Page ' + n + ' of ' + total;
+    op('BT /F1 7.5 Tf ' + col(GREY) + ' rg 1 0 0 1 ' + (W - M - wid(r, 7.5, false)) + ' 32 Tm (' + esc(r) + ') Tj ET');
+  }
+
+  this.newPage = function () { cur = { ops: [], imgs: [] }; pages.push(cur); pageHeader(); };
+  this.y = function () { return y; };
+  this.ensure = function (h) { if (y - h < 62) { this.newPage(); return true; } return false; };
+  this.gap = function (h) { y -= (h || 8); };
+
+  this.h1 = function (t) {
+    self.ensure(40);
+    var lines = wrap(t, W - 2 * M, 17, true);
+    lines.forEach(function (l) {
+      op('BT /F2 17 Tf ' + col(NAVY) + ' rg 1 0 0 1 ' + M + ' ' + (y - 14) + ' Tm (' + esc(l) + ') Tj ET');
+      y -= 21;
+    });
+    y -= 4;
+    op(col(GOLD) + ' RG 2 w ' + M + ' ' + y + ' m ' + (M + 54) + ' ' + y + ' l S');
+    y -= 14;
+  };
+  this.h2 = function (t) {
+    y -= 6;
+    self.ensure(34);
+    op('BT /F2 8.5 Tf ' + col(RED) + ' rg 1 0 0 1 ' + M + ' ' + (y - 9) + ' Tm (' + esc(t.toUpperCase()) + ') Tj ET');
+    y -= 15;
+    op(col(LINE) + ' RG 0.7 w ' + M + ' ' + y + ' m ' + (W - M) + ' ' + y + ' l S');
+    y -= 12;
+  };
+  this.body = function (t, o) {
+    o = o || {};
+    var size = o.size || 9.5, bold = !!o.bold, c = o.color || BLACK;
+    var indent = o.indent || 0;
+    var lines = wrap(t, W - 2 * M - indent, size, bold);
+    lines.forEach(function (l) {
+      self.ensure(size + 4);
+      op('BT /F' + (bold ? 2 : 1) + ' ' + size + ' Tf ' + col(c) + ' rg 1 0 0 1 ' +
+         (M + indent) + ' ' + (y - size) + ' Tm (' + esc(l) + ') Tj ET');
+      y -= (size + 3.2);
+    });
+    y -= (o.after === undefined ? 4 : o.after);
+  };
+  this.bullet = function (t) {
+    var size = 9.5;
+    var lines = wrap(t, W - 2 * M - 14, size, false);
+    lines.forEach(function (l, i) {
+      self.ensure(size + 4);
+      if (i === 0) op('BT /F2 9.5 Tf ' + col(GOLD) + ' rg 1 0 0 1 ' + M + ' ' + (y - size) + ' Tm (-) Tj ET');
+      op('BT /F1 ' + size + ' Tf ' + col(BLACK) + ' rg 1 0 0 1 ' + (M + 14) + ' ' + (y - size) + ' Tm (' + esc(l) + ') Tj ET');
+      y -= (size + 3.2);
+    });
+    y -= 2;
+  };
+  this.kv = function (label, val) {
+    var lw = 138, size = 9.5, lsize = 8;
+    val = (val === undefined || val === null || val === '') ? '-' : String(val);
+    var vlines = wrap(val, W - 2 * M - lw, size, false);
+    var llines = wrap(String(label == null ? '' : label), lw - 10, lsize, true);
+    var rows = Math.max(vlines.length, llines.length);
+    self.ensure(rows * (size + 3.2) + 8);
+    var top = y;
+    llines.forEach(function (l, i) {
+      op('BT /F2 ' + lsize + ' Tf ' + col(GREY) + ' rg 1 0 0 1 ' + M + ' ' +
+         (top - size - i * (size + 3.2)) + ' Tm (' + esc(l) + ') Tj ET');
+    });
+    vlines.forEach(function (l, i) {
+      op('BT /F1 ' + size + ' Tf ' + col(BLACK) + ' rg 1 0 0 1 ' + (M + lw) + ' ' +
+         (top - size - i * (size + 3.2)) + ' Tm (' + esc(l) + ') Tj ET');
+    });
+    y = top - rows * (size + 3.2);
+    op(col([0.90, 0.91, 0.93]) + ' RG 0.4 w ' + M + ' ' + (y + 1) + ' m ' + (W - M) + ' ' + (y + 1) + ' l S');
+    y -= 4;
+  };
+  this.tableHead = function (cols, widths) {
+    self.ensure(24);
+    op(col(NAVY) + ' rg ' + M + ' ' + (y - 15) + ' ' + (W - 2 * M) + ' 15 re f');
+    var x = M + 5;
+    cols.forEach(function (c, i) {
+      op('BT /F2 7.5 Tf ' + col([1, 1, 1]) + ' rg 1 0 0 1 ' + x + ' ' + (y - 11) + ' Tm (' + esc(c.toUpperCase()) + ') Tj ET');
+      x += widths[i];
+    });
+    y -= 18;
+  };
+  this.tableRow = function (cells, widths, bold) {
+    var size = 9;
+    var stacks = cells.map(function (c, i) { return wrap(String(c == null ? '' : c), widths[i] - 8, size, !!bold); });
+    var rows = Math.max.apply(null, stacks.map(function (s) { return s.length; }));
+    self.ensure(rows * (size + 3) + 6);
+    var top = y, x = M + 5;
+    stacks.forEach(function (st, i) {
+      var yy = top;
+      st.forEach(function (l) {
+        op('BT /F' + (bold ? 2 : 1) + ' ' + size + ' Tf ' + col(BLACK) + ' rg 1 0 0 1 ' + x + ' ' + (yy - size) + ' Tm (' + esc(l) + ') Tj ET');
+        yy -= (size + 3);
+      });
+      x += widths[i];
+    });
+    y = top - rows * (size + 3) - 3;
+    op(col([0.90, 0.91, 0.93]) + ' RG 0.4 w ' + M + ' ' + y + ' m ' + (W - M) + ' ' + y + ' l S');
+    y -= 4;
+  };
+  this.callout = function (title, text, kind) {
+    var c = kind === 'red' ? RED : (kind === 'green' ? [0.04, 0.42, 0.24] : GOLD);
+    var size = 9;
+    var tl = title ? wrap(title, W - 2 * M - 22, 8, true) : [];
+    var bl = wrap(text, W - 2 * M - 22, size, false);
+    var h = tl.length * 11 + bl.length * (size + 3) + 14;
+    self.ensure(h + 6);
+    var top = y;
+    op(col(c) + ' rg ' + M + ' ' + (top - h) + ' 3.5 ' + h + ' re f');
+    op(col([0.975, 0.975, 0.97]) + ' rg ' + (M + 3.5) + ' ' + (top - h) + ' ' + (W - 2 * M - 3.5) + ' ' + h + ' re f');
+    var yy = top - 11;
+    tl.forEach(function (l) {
+      op('BT /F2 8 Tf ' + col(c) + ' rg 1 0 0 1 ' + (M + 14) + ' ' + yy + ' Tm (' + esc(l.toUpperCase()) + ') Tj ET');
+      yy -= 11;
+    });
+    bl.forEach(function (l) {
+      op('BT /F1 ' + size + ' Tf ' + col(BLACK) + ' rg 1 0 0 1 ' + (M + 14) + ' ' + (yy - 1) + ' Tm (' + esc(l) + ') Tj ET');
+      yy -= (size + 3);
+    });
+    y = top - h - 8;
+  };
+  /** jpegDataUrl: "data:image/jpeg;base64,..."  */
+  this.image = function (jpegDataUrl, iw, ih, caption) {
+    var b64 = jpegDataUrl.split(',')[1];
+    var bin = (typeof atob === 'function') ? atob(b64) : Buffer.from(b64, 'base64').toString('binary');
+    var name = 'Im' + (imgs.length + 1);
+    imgs.push({ name: name, data: bin, w: iw, h: ih });
+    var maxW = W - 2 * M, maxH = y - 70;
+    if (maxH < 200) { self.newPage(); maxH = y - 70; }
+    var sc = Math.min(maxW / iw, maxH / ih);
+    var dw = iw * sc, dh = ih * sc, x = M + (maxW - dw) / 2;
+    op(col(LINE) + ' RG 0.8 w ' + (x - 2) + ' ' + (y - dh - 2) + ' ' + (dw + 4) + ' ' + (dh + 4) + ' re S');
+    op('q ' + dw.toFixed(2) + ' 0 0 ' + dh.toFixed(2) + ' ' + x.toFixed(2) + ' ' + (y - dh).toFixed(2) + ' cm /' + name + ' Do Q');
+    cur.imgs.push(name);
+    y -= (dh + 10);
+    if (caption) self.body(caption, { size: 8, color: GREY });
+  };
+
+  this.attach = function (str) {
+    try {
+      var b64 = (typeof btoa === 'function')
+        ? btoa(unescape(encodeURIComponent(str)))
+        : Buffer.from(str, 'utf8').toString('base64');
+      self.__payload = 'DDINTAKE-BEGIN:' + b64 + ':DDINTAKE-END';
+    } catch (e) { self.__payload = null; }
+  };
+  this.sigline = function (label, prefill) {
+    self.ensure(30);
+    var y0 = y - 16;
+    op(col([0.25, 0.28, 0.32]) + ' RG 0.9 w ' + M + ' ' + y0 + ' m ' + (W - M - 120) + ' ' + y0 + ' l S');
+    op('BT /F1 7.5 Tf ' + col(GREY) + ' rg 1 0 0 1 ' + M + ' ' + (y0 - 9) + ' Tm (' + esc(label) + ') Tj ET');
+    if (prefill) {
+      op('BT /F1 10.5 Tf ' + col(BLACK) + ' rg 1 0 0 1 ' + (M + 4) + ' ' + (y0 + 5) + ' Tm (' + esc(prefill) + ') Tj ET');
+    }
+    y = y0 - 14;
+  };
+  this.sigimage = function (jpegDataUrl, iw, ih, drawW) {
+    try {
+      var b64 = jpegDataUrl.split(',')[1];
+      var bin = (typeof atob === 'function') ? atob(b64) : Buffer.from(b64, 'base64').toString('binary');
+      var name = 'Im' + (imgs.length + 1);
+      imgs.push({ name: name, data: bin, w: iw, h: ih });
+      var dw = drawW || 190, dh = dw * (ih / iw);
+      self.ensure(dh + 10);
+      op('q ' + dw.toFixed(2) + ' 0 0 ' + dh.toFixed(2) + ' ' + M.toFixed(2) + ' ' +
+         (y - dh).toFixed(2) + ' cm /' + name + ' Do Q');
+      cur.imgs.push(name);
+      y -= (dh + 2);
+    } catch (e) {}
+  };
+  this.build = function () {
+    var total = pages.length;
+    pages.forEach(function (p, i) {
+      cur = p; y = 0; pageFooter(i + 1, total);
+    });
+    var objs = [], out = '%PDF-1.4\n%\xE2\xE3\xCF\xD3\n';
+    function add(s) { objs.push(s); return objs.length; }
+
+    var fontH = add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+    var fontB = add('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+    var imgIds = {};
+    imgs.forEach(function (im) {
+      imgIds[im.name] = add('<< /Type /XObject /Subtype /Image /Width ' + im.w + ' /Height ' + im.h +
+        ' /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ' + im.data.length +
+        ' >>\nstream\n' + im.data + '\nendstream');
+    });
+
+    var pagesId = objs.length + 1 + pages.length * 2;
+    var kids = [];
+    pages.forEach(function (p) {
+      var content = p.ops.join('\n');
+      var cid = add('<< /Length ' + content.length + ' >>\nstream\n' + content + '\nendstream');
+      var xo = p.imgs.map(function (n) { return '/' + n + ' ' + imgIds[n] + ' 0 R'; }).join(' ');
+      var pid = add('<< /Type /Page /Parent ' + pagesId + ' 0 R /MediaBox [0 0 ' + W + ' ' + H + ']' +
+        ' /Resources << /Font << /F1 ' + fontH + ' 0 R /F2 ' + fontB + ' 0 R >>' +
+        (xo ? ' /XObject << ' + xo + ' >>' : '') + ' >>' +
+        ' /Contents ' + cid + ' 0 R >>');
+      kids.push(pid);
+    });
+    var realPages = add('<< /Type /Pages /Count ' + pages.length + ' /Kids [' +
+      kids.map(function (k) { return k + ' 0 R'; }).join(' ') + '] >>');
+    // fix parent references if the estimate was off
+    if (realPages !== pagesId) {
+      objs = objs.map(function (o) {
+        return (typeof o === 'string') ? o.replace('/Parent ' + pagesId + ' 0 R', '/Parent ' + realPages + ' 0 R') : o;
+      });
+    }
+    if (self.__payload) {
+      add('<< /Type /DDIntake /Length ' + self.__payload.length + ' >>\nstream\n' + self.__payload + '\nendstream');
+    }
+    var cat = add('<< /Type /Catalog /Pages ' + realPages + ' 0 R >>');
+
+    var offsets = [0];
+    objs.forEach(function (o, i) {
+      offsets.push(out.length);
+      out += (i + 1) + ' 0 obj\n' + o + '\nendobj\n';
+    });
+    var xref = out.length;
+    out += 'xref\n0 ' + (objs.length + 1) + '\n0000000000 65535 f \n';
+    for (var i = 1; i <= objs.length; i++) {
+      out += ('0000000000' + offsets[i]).slice(-10) + ' 00000 n \n';
+    }
+    out += 'trailer\n<< /Size ' + (objs.length + 1) + ' /Root ' + cat + ' 0 R >>\nstartxref\n' + xref + '\n%%EOF';
+    return out;
+  };
+
+  this.newPage();
+}
+
+
+
+
+
+"use strict";
+
+/* =============================================================
+   APPROVED LEGAL TEXT — the ONLY place terms are edited.
+   Paste the text Legal has approved between the quotes below.
+   It renders verbatim on the member copy. Nothing here is
+   drafted by the tool, and nothing else in this file contains
+   terms. One source, reviewed once, printed everywhere.
+   ============================================================= */
+var LEGAL_BLOCKS = [
+  { title: "", body: "" }
+  // Example of the shape once Legal supplies the wording:
+  // { title: "Notice of Cancellation", body: "…approved wording, verbatim…" },
+  // { title: "Limitation of Liability", body: "…approved wording, verbatim…" },
+  // { title: "Monitoring Terms", body: "…approved wording, verbatim…" }
+];
+var LEGAL_REV = "";   // e.g. "Legal Rev C, approved 2026-09-15" — prints in the footer
+
+/* Session-only state. Never written to storage. */
+var P = { eq: [], ppw: {} };
+
+var PPW_DOCS = [
+  ["agreement", "Dealer / monitoring agreement", "Executed separately. Not reproduced here."],
+  ["monauth", "Monitoring authorization and call list", "Names and order confirmed with the member"],
+  ["permit", "Permit or alarm registration application", "Where the jurisdiction requires one"],
+  ["falsealarm", "False alarm ordinance notice", "Given to the member, fines land on them"],
+  ["coolingoff", "Cancellation notice", "Where it applies to the sale. Never talk a member out of it."],
+  ["takeover", "Takeover authorization", "Only where an existing system is being assumed"],
+  ["wifi", "Network and app handover sheet", "No passwords written down on the member copy"]
+];
+
+function el(id) { return document.getElementById(id); }
+function v(id) { var e = el(id); return e ? String(e.value || "").trim() : ""; }
+function chk(id) { var e = el(id); return !!(e && e.checked); }
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+  });
+}
+function toast(m) {
+  var t = document.createElement("div"); t.className = "toast"; t.textContent = m;
+  document.body.appendChild(t); setTimeout(function () { t.remove(); }, 3000);
+}
+
+/* ---------------- equipment rows ---------------- */
+function ppwAddRow(qty, what, where) {
+  var host = el("eqRows"); if (!host) return;
+  var n = host.children.length;
+  var d = document.createElement("div");
+  d.className = "eqrow";
+  d.innerHTML =
+    '<input type="text" inputmode="numeric" placeholder="Qty" value="' + esc(qty || "") + '" data-k="q">' +
+    '<input type="text" placeholder="What it is" value="' + esc(what || "") + '" data-k="w">' +
+    '<input type="text" placeholder="Where it went" value="' + esc(where || "") + '" data-k="l">';
+  host.appendChild(d);
+  void n;
+}
+function ppwReadRows() {
+  var out = [];
+  var host = el("eqRows"); if (!host) return out;
+  Array.prototype.forEach.call(host.children, function (row) {
+    var q = row.querySelector('[data-k="q"]').value.trim();
+    var w = row.querySelector('[data-k="w"]').value.trim();
+    var l = row.querySelector('[data-k="l"]').value.trim();
+    if (q || w || l) out.push({ q: q, w: w, l: l });
+  });
+  return out;
+}
+
+function ppwDocRows() {
+  var host = el("ppwRows"); if (!host) return;
+  host.innerHTML = PPW_DOCS.map(function (d) {
+    return '<label class="opt"><input type="checkbox" id="d_' + d[0] + '">' +
+      '<span>' + esc(d[1]) + '<small>' + esc(d[2]) + '</small></span></label>';
+  }).join("");
+}
+
+/* ---------------- the one-pager ---------------- */
+function ppwBuild() {
+  var pdf = new DDPdf({
+    brand: "AAA SMART HOME SECURITY",
+    docType: "SERVICE RECORD \u2014 MEMBER COPY",
+    prospect: v("p_name"),
+    date: v("p_date")
+  });
+
+  pdf.h1("Service Record");
+  pdf.body("Member copy. Keep this with your system documents.", { size: 9.5, color: [0.35, 0.38, 0.42], after: 8 });
+
+  pdf.h2("Visit");
+  pdf.kv("Member", v("p_name"));
+  pdf.kv("Service address", [v("p_addr"), v("p_city"), v("p_state")].filter(Boolean).join(", "));
+  pdf.kv("Date", v("p_date"));
+  pdf.kv("On site", [v("p_in"), v("p_out")].filter(Boolean).join(" to "));
+  pdf.kv("Work order", v("p_wo"));
+  pdf.kv("Installed by", v("p_dlr") ? ("Authorised dealer " + v("p_dlr")) : "Authorised dealer");
+  pdf.kv("Installing technician", v("p_tech"));
+  if (v("p_subdlr")) pdf.kv("Subcontracted to", "Authorised dealer " + v("p_subdlr"));
+  pdf.kv("Type of work", v("p_type"));
+
+  if (v("p_ask")) { pdf.h2("Why we were there"); pdf.body(v("p_ask"), { size: 9.5 }); }
+
+  var rows = ppwReadRows();
+  if (rows.length) {
+    pdf.h2("Equipment and work");
+    var w = [42, 214, 248];
+    pdf.tableHead(["Qty", "What it is", "Where"], w);
+    rows.forEach(function (r) { pdf.tableRow([r.q, r.w, r.l], w); });
+  }
+  if (v("p_work")) { pdf.body(v("p_work"), { size: 9.5, after: 6 }); }
+
+  pdf.h2("Tested with you present");
+  [["t_comm", "Communication to the monitoring centre \u2014 signal confirmed received"],
+   ["t_walk", "Walk test on every sensor installed"],
+   ["t_siren", "Siren and sounders verified audible"],
+   ["t_batt", "Backup battery present and holding"],
+   ["t_app", "App installed, live event seen on your phone"],
+   ["t_place", "Monitoring placed back on service before departure"]
+  ].forEach(function (t) {
+    pdf.body((chk(t[0]) ? "[X]  " : "[  ]  ") + t[1], { size: 9.5, indent: 4, after: 1 });
+  });
+
+  pdf.h2("Explained to you today");
+  [["e_arm", "Arming and disarming, including delay times"],
+   ["e_app", "Using the app, and who else you can give access to"],
+   ["e_false", "Avoiding a false alarm, and what to do if one happens"],
+   ["e_code", "How to change your own codes \u2014 we do not record them"],
+   ["e_test", "How to put the system on test before you work on it"],
+   ["e_support", "Who to call, and what to have ready"]
+  ].forEach(function (t) {
+    pdf.body((chk(t[0]) ? "[X]  " : "[  ]  ") + t[1], { size: 9.5, indent: 4, after: 1 });
+  });
+
+  pdf.h2("Installing dealer confirms");
+  [["i_lic", "Licence or registration current for this state and this work"],
+   ["i_card", "Alarm agent card carried where the jurisdiction requires one"],
+   ["i_id", "Photo identification shown and vehicle identified on arrival"],
+   ["i_mon", "Monitoring account activated and confirmed with the monitoring centre"]
+  ].forEach(function (t) {
+    pdf.body((chk(t[0]) ? "[X]  " : "[  ]  ") + t[1], { size: 9.5, indent: 4, after: 1 });
+  });
+  if (v("p_permresp")) pdf.kv("Permit / registration", v("p_permresp"));
+
+  var docs = PPW_DOCS.filter(function (d) { return chk("d_" + d[0]); });
+  if (docs.length || v("p_permit")) {
+    pdf.h2("Paperwork handled today");
+    docs.forEach(function (d) { pdf.body("[X]  " + d[1], { size: 9.5, indent: 4, after: 1 }); });
+    if (v("p_permit")) pdf.kv("Permit / registration", v("p_permit"));
+  }
+
+  if (chk("p_ord_flag")) {
+    pdf.callout("Flagged for review",
+      "Something on this site relates to permit, monitoring or false-alarm ordinance requirements and has been " +
+      "raised the same day. The Authority Having Jurisdiction has final say on any such requirement.", "red");
+  }
+
+  if (v("p_open")) {
+    pdf.h2("Left open");
+    pdf.body(v("p_open"), { size: 9.5 });
+    pdf.kv("Owner", v("p_owner") || "UNASSIGNED");
+    pdf.kv("By", v("p_due") || "NO DATE");
+    if (v("p_case")) pdf.kv("Case number", v("p_case"));
+  }
+
+  pdf.gap(8);
+  pdf.h2("Signatures");
+  pdf.body("Signing confirms the work above was completed and the items above were explained. This is a service " +
+           "record. It is not the agreement, not a price quote, and it does not change any terms.",
+           { size: 8.5, color: [0.35, 0.38, 0.42] });
+  pdf.gap(10);
+  if (PPW_SIG.member) pdf.sigimage(PPW_SIG.member.url, PPW_SIG.member.w, PPW_SIG.member.h, 190);
+  pdf.sigline("Member signature", "");
+  pdf.gap(5);
+  pdf.sigline("Printed name", v("p_sig"));
+  pdf.gap(5);
+  pdf.sigline("Relationship to the premises", v("p_rel"));
+  pdf.gap(9);
+  if (PPW_SIG.tech) pdf.sigimage(PPW_SIG.tech.url, PPW_SIG.tech.w, PPW_SIG.tech.h, 190);
+  pdf.sigline("Installing technician signature", "");
+  pdf.gap(5);
+  pdf.sigline("Printed name", v("p_tech"));
+  pdf.gap(5);
+  pdf.sigline("Date", v("p_date"));
+
+  pdf.gap(8);
+  pdf.h2("Signed where and when");
+  if (PPW_SIG.member) pdf.kv("Member signed at", new Date(PPW_SIG.member.at).toLocaleString());
+  if (PPW_SIG.tech) pdf.kv("Technician signed at", new Date(PPW_SIG.tech.at).toLocaleString());
+  if (PPW_GEO) {
+    pdf.kv("Device location", PPW_GEO.lat.toFixed(5) + ", " + PPW_GEO.lng.toFixed(5));
+    pdf.kv("Reported accuracy", "within approximately " + Math.round(PPW_GEO.acc) + " metres");
+    pdf.kv("Location taken", new Date(PPW_GEO.at).toLocaleString());
+  } else {
+    pdf.kv("Device location", "not recorded");
+  }
+  pdf.kv("Captured by", (window.DD_USER && (window.DD_USER.name + " (" + window.DD_USER.id + ")")) || "-");
+  pdf.kv("Verification code", ppwRecordHash());
+  pdf.body("The location above is where the device was, to the accuracy the device reported, at the time shown. " +
+           "It is not proof of who signed, not proof of attendance, and not a verification of the service address. " +
+           "The verification code is a fingerprint of this record as printed - if any detail above is altered, " +
+           "the code no longer matches.",
+           { size: 7.5, color: [0.35, 0.38, 0.42] });
+
+  var legal = LEGAL_BLOCKS.filter(function (b) { return b && b.body && b.body.trim(); });
+  if (legal.length) {
+    pdf.newPage();
+    pdf.h1("Terms");
+    legal.forEach(function (b) {
+      if (b.title) pdf.h2(b.title);
+      pdf.body(b.body, { size: 9 });
+      pdf.gap(4);
+    });
+    if (LEGAL_REV) pdf.body(LEGAL_REV, { size: 7.5, color: [0.35, 0.38, 0.42] });
+  }
+
+  pdf.gap(6);
+  pdf.body("No account numbers, panel codes, passcodes or payment details are recorded on this page. " +
+           "Licensing questions route to Compliance. Contract language routes to legal review. " +
+           "Work performed by an authorised AAA Smart Home Security dealer. Keep this copy with your " +
+           "system documents and call the number on your monitoring agreement for service.",
+           { size: 7.5, color: [0.35, 0.38, 0.42] });
+
+  return pdf.build();
+}
+
+var PPW_DL = null;
+try {
+  if (window.claude && typeof window.claude.use === "function") {
+    Promise.resolve(window.claude.use("downloads")).then(function (d) { PPW_DL = d; }).catch(function () {});
+  }
+} catch (e) {}
+
+function ppwPrint(mode) {
+  if (!v("p_name")) { toast("Member name is needed on their copy."); return; }
+  var bin;
+  try { bin = ppwBuild(); }
+  catch (e) { toast("Could not build the page."); return; }
+  var arr = new Uint8Array(bin.length);
+  for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i) & 0xFF;
+  var blob = new Blob([arr], { type: "application/pdf" });
+  var name = "AAA Service Record " + (v("p_wo") || v("p_name")) + " " +
+             (v("p_date") || new Date().toISOString().slice(0, 10)) + ".pdf";
+  if (mode === "print") { ddTryPrint(blob, name); return; }
+  if (PPW_DL && PPW_DL.save) {
+    PPW_DL.save({ filename: name, data: blob }).catch(function (err) {
+      if (!(err && err.code === "declined")) ppwFallback(blob, name);
+    });
+    return;
+  }
+  ppwFallback(blob, name);
+}
+
+
+// ============ ADDED: one-tap print ============
+// Builds the PDF, hands it straight to the printer where the browser allows it,
+// and degrades honestly where it does not.
+function ddTryPrint(blob, name) {
+  var url;
+  try { url = URL.createObjectURL(blob); }
+  catch (e) { return ddPrintGiveUp(blob, name); }
+
+  var done = false, old = document.getElementById("ddPrintFrame");
+  if (old) { try { old.remove(); } catch (e) {} }
+
+  try {
+    var f = document.createElement("iframe");
+    f.id = "ddPrintFrame";
+    f.style.cssText = "position:fixed;right:0;bottom:0;width:1px;height:1px;opacity:0;border:0";
+    f.onload = function () {
+      try {
+        f.contentWindow.focus();
+        f.contentWindow.print();
+        done = true;
+      } catch (e) {}
+    };
+    f.src = url;
+    document.body.appendChild(f);
+  } catch (e) {}
+
+  // No print dialog within 1.8s means the browser refused it — phones always land here.
+  setTimeout(function () {
+    if (done) return;
+    try {
+      var w = window.open(url, "_blank");
+      if (w) return;
+    } catch (e) {}
+    ddPrintGiveUp(blob, name);
+  }, 1800);
+}
+
+function ddPrintGiveUp(blob, name) {
+  // Last resort: hand over the file. On a phone this opens the share sheet,
+  // which is where Print lives anyway.
+  try {
+    if (typeof DD_DL !== "undefined" && DD_DL && DD_DL.save) {
+      DD_DL.save({ filename: name, data: blob }).catch(function () {});
+      return;
+    }
+    if (typeof DD_DOWNLOADS !== "undefined" && DD_DOWNLOADS && DD_DOWNLOADS.save) {
+      DD_DOWNLOADS.save({ filename: name, data: blob }).catch(function () {});
+      return;
+    }
+    if (typeof PPW_DL !== "undefined" && PPW_DL && PPW_DL.save) {
+      PPW_DL.save({ filename: name, data: blob }).catch(function () {});
+      return;
+    }
+  } catch (e) {}
+  try {
+    var u = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = u; a.download = name; a.rel = "noopener";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(u); }, 4000);
+  } catch (e) {}
+}
+
+function ppwFallback(blob, name) {
+  try {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = name; a.rel = "noopener";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  } catch (e) {
+    try { window.open(URL.createObjectURL(blob), "_blank"); }
+    catch (e2) { toast("Could not deliver the page on this device. Use Copy as text."); }
+  }
+}
+
+function ppwText() {
+  var rows = ppwReadRows();
+  var out = "AAA SMART HOME SECURITY \u2014 SERVICE RECORD (MEMBER COPY)\n";
+  out += "Member: " + v("p_name") + "\nAddress: " + [v("p_addr"), v("p_city"), v("p_state")].filter(Boolean).join(", ");
+  out += "\nDate: " + v("p_date") + "   On site: " + v("p_in") + " to " + v("p_out");
+  out += "\nWork order: " + v("p_wo") + "   Technician: " + v("p_tech") + "   DLR: " + v("p_dlr");
+  out += "\nType: " + v("p_type") + "\n";
+  if (v("p_ask")) out += "\nAsked for: " + v("p_ask") + "\n";
+  if (rows.length) {
+    out += "\nEQUIPMENT AND WORK\n";
+    rows.forEach(function (r) { out += "  " + r.q + "  " + r.w + "  \u2014  " + r.l + "\n"; });
+  }
+  if (v("p_work")) out += "\n" + v("p_work") + "\n";
+  if (v("p_open")) out += "\nLEFT OPEN: " + v("p_open") + "\n  Owner: " + (v("p_owner") || "UNASSIGNED") +
+                          "   By: " + (v("p_due") || "NO DATE") + "\n";
+  out += "\nNo account numbers, panel codes, passcodes or payment details are recorded.\n";
+  return out;
+}
+function ppwCopy() {
+  var t = ppwText();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(t).then(function () { toast("Copied."); })
+      .catch(function () { toast("Copy failed."); });
+  } else toast("Clipboard unavailable on this device.");
+}
+
+function ppwClear() {
+  if (!confirm("Clear this record?\n\nNothing is saved anywhere. If you have not printed or sent it, it is gone.")) return;
+  document.querySelectorAll(".content input, .content select, .content textarea").forEach(function (e) {
+    if (e.type === "checkbox") e.checked = false; else e.value = "";
+  });
+  el("eqRows").innerHTML = "";
+  for (var i = 0; i < 3; i++) ppwAddRow();
+  ppwSeed();
+  toast("Cleared.");
+}
+
+function ppwTheme() {
+  var r = document.documentElement;
+  var t = r.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  r.setAttribute("data-theme", t);
+  var b = el("ppwThemeBtn"); if (b) b.textContent = (t === "dark") ? "LIGHT" : "DARK";
+  try { localStorage.setItem("aaa.ppw.theme", t); } catch (e) {}
+}
+
+function ppwLegalStatus() {
+  try {
+    var ok = LEGAL_BLOCKS.some(function (b) { return b && b.body && b.body.trim(); });
+    var w = el("legalWarn");
+    if (w) w.style.display = ok ? "none" : "block";
+  } catch (e) {}
+}
+
+// ============ ADDED: note templates ============
+// Canned lines a technician can drop into any notes box. Searchable, grouped,
+// and written the way the field actually talks. Nothing here is contract
+// language, a code citation, or a price.
+
+var DD_NOTE_TEMPLATES = {
+  "Reason for the visit": [
+    "Member called about [device] not responding since [when].",
+    "Scheduled install from the sales walk on [date].",
+    "Takeover of an existing system. Member wants to keep [what] and replace [what].",
+    "Follow-up to a previous visit. Original issue was [what].",
+    "Member reported false alarms, [how many] in the last [period].",
+    "Adding coverage after a [break-in / attempted entry]. Member's words: \"[quote them]\".",
+    "Battery replacement and system health check.",
+    "Member moving in and wants the existing system brought back on service.",
+    "Member asked for a walkthrough of what they already have.",
+    "Annual inspection and test."
+  ],
+  "Work performed": [
+    "Installed [qty] [device] at [location]. Tested and confirmed signal at the panel.",
+    "Replaced [device] at [location]. Old unit [symptom]. New unit tested.",
+    "Mounted panel at [location] - powered, reachable, and confirmed signal strength.",
+    "Ran communication test to the monitoring centre. Signal confirmed received, not just sent.",
+    "Walk tested every sensor installed today with the member present.",
+    "Replaced backup battery. Old battery [condition]. New one holding.",
+    "Re-aimed [camera] to cover [area]. Member confirmed the view on their phone.",
+    "Cleaned and re-seated [device]. Issue did not recur during the visit.",
+    "Reconnected system to the member's network after a router change.",
+    "Could not complete [what] today because [reason]. See the open items below.",
+    "Removed [qty] [device] no longer in use. Left the wall patched."
+  ],
+  "Testing and handover": [
+    "Placed monitoring back on service before departure. Confirmed with the centre.",
+    "Member received a live test event on their phone while I was on site.",
+    "Siren verified audible from [where].",
+    "Showed the member how to arm and disarm, including the entry delay.",
+    "Showed the member how to change their own codes. No code recorded by me.",
+    "Explained what to do if a false alarm happens and who pays the ordinance fine.",
+    "Showed the member how to put the system on test before they work on it themselves.",
+    "Left contact details and explained what to have ready when they call."
+  ],
+  "Left open / follow-up": [
+    "[Device] on backorder. Owner: [role or DLR #]. By: [date]. Case: [number].",
+    "Needs a second visit to complete [what]. Member available [when].",
+    "Waiting on the member to [what] before this can be finished.",
+    "Cable path across [where] is not accessible today. Needs [what].",
+    "Existing panel could not be positively identified. Escalated rather than worked on.",
+    "Network is not stable enough to commission [what]. Member is contacting their provider.",
+    "Access to [area] was not available today.",
+    "Member deferred [what] to a later visit. Their decision, noted here."
+  ],
+  "Routing - never answered on site": [
+    "Member asked about fire or sprinkler scope. Routed to the fire team. Nothing priced or promised.",
+    "Member asked a code question. Did not answer. Routed, and noted that the AHJ has final say.",
+    "Member asked about licensing. Routed to Compliance. No interpretation given on site.",
+    "Member asked about agreement wording. Routed to legal review. Nothing explained or promised.",
+    "Permit or alarm registration status unclear. Flagged the same day rather than worked around.",
+    "Member asked for a price. Explained that pricing comes from [who] and did not quote a number."
+  ],
+  "Site conditions and safety": [
+    "Ceiling height at [where] is approximately [height]. Lift required for any further work.",
+    "Dog on site. Member secured it before I started.",
+    "Work completed outside business hours at the member's request, [times].",
+    "Panel location has no accessible power. Needs [what] before anything is mounted.",
+    "Cellular signal at the intended panel location was [strength]. Relocated to [where].",
+    "Pre-existing damage at [where], photographed before work started. No member details in frame.",
+    "Left the work area cleaner than I found it. Debris removed."
+  ],
+  "Member said": [
+    "Member's words: \"[quote them exactly]\".",
+    "Member's main concern is [what], not [what we assumed].",
+    "Member wants to be notified the moment [what] happens.",
+    "Member asked about adding [what] later. No commitment given.",
+    "Member is the decision maker. / Decision maker is [role], not on site today.",
+    "Member was happy with [what] and said so unprompted."
+  ]
+};
+
+// which boxes get which groups
+var DD_NOTE_MAP = {
+  p_ask:      ["Reason for the visit", "Member said"],
+  p_work:     ["Work performed", "Testing and handover", "Site conditions and safety"],
+  p_open:     ["Left open / follow-up", "Routing - never answered on site"],
+  f_sig_note: ["Member said"],
+  f_tn_recap: ["Member said", "Reason for the visit"],
+  f_tn_next:  ["Left open / follow-up"],
+  f_scope:    ["Member said", "Site conditions and safety"],
+  f_addl:     ["Member said"],
+  sw_findings:["Site conditions and safety", "Work performed"],
+  sw_concerns:["Site conditions and safety", "Routing - never answered on site"],
+  int_notes:  ["Site conditions and safety", "Routing - never answered on site"],
+  vid_notes:  ["Site conditions and safety", "Routing - never answered on site"],
+  acc_notes:  ["Site conditions and safety", "Routing - never answered on site"],
+  fir_notes:  ["Routing - never answered on site"],
+  gat_notes:  ["Site conditions and safety", "Routing - never answered on site"],
+  ins_notes:  ["Routing - never answered on site"]
+};
+
+function ddNoteEsc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+    return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+  });
+}
+
+function ddNoteInsert(ta, text) {
+  var cur = ta.value || "";
+  var at = (typeof ta.selectionStart === "number") ? ta.selectionStart : cur.length;
+  var before = cur.slice(0, at), after = cur.slice(at);
+  var sep = (before && !/\n$/.test(before)) ? "\n" : "";
+  ta.value = before + sep + text + after;
+  try {
+    var pos = (before + sep + text).length;
+    ta.focus(); ta.setSelectionRange(pos, pos);
+  } catch (e) {}
+  try { ta.dispatchEvent(new Event("input", { bubbles: true })); } catch (e) {}
+}
+
+function ddNotePanel(ta, groups) {
+  var wrap = ta.parentNode.querySelector(".ddnote");
+  if (wrap) { wrap.remove(); return; }
+
+  wrap = document.createElement("div");
+  wrap.className = "ddnote";
+  var all = [];
+  groups.forEach(function (g) {
+    (DD_NOTE_TEMPLATES[g] || []).forEach(function (t) { all.push({ g: g, t: t }); });
+  });
+
+  wrap.innerHTML =
+    '<input type="search" class="ddnote-q" placeholder="Search notes\u2026" autocomplete="off">' +
+    '<div class="ddnote-list"></div>' +
+    '<div class="ddnote-foot">Tap a line to drop it in. Replace anything in [brackets]. ' +
+    'Nothing here is a price, a code citation, or contract wording.</div>';
+  ta.parentNode.appendChild(wrap);
+
+  var q = wrap.querySelector(".ddnote-q");
+  var list = wrap.querySelector(".ddnote-list");
+
+  function draw(filter) {
+    var f = String(filter || "").toLowerCase().trim();
+    var shown = all.filter(function (x) {
+      return !f || x.t.toLowerCase().indexOf(f) >= 0 || x.g.toLowerCase().indexOf(f) >= 0;
+    });
+    if (!shown.length) { list.innerHTML = '<div class="ddnote-none">Nothing matches that.</div>'; return; }
+    var html = "", last = null;
+    shown.forEach(function (x, i) {
+      if (x.g !== last) { last = x.g; html += '<div class="ddnote-g">' + ddNoteEsc(x.g) + "</div>"; }
+      html += '<button type="button" class="ddnote-i" data-i="' + i + '">' + ddNoteEsc(x.t) + "</button>";
+    });
+    list.innerHTML = html;
+    list.querySelectorAll(".ddnote-i").forEach(function (b, idx) {
+      b.onclick = function () { ddNoteInsert(ta, shown[idx].t); };
+    });
+  }
+  draw("");
+  q.addEventListener("input", function () { draw(q.value); });
+  try { q.focus(); } catch (e) {}
+}
+
+function ddNotesAttach() {
+  Object.keys(DD_NOTE_MAP).forEach(function (id) {
+    var ta = document.getElementById(id);
+    if (!ta || ta.dataset.ddnote) return;
+    ta.dataset.ddnote = "1";
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "ddnote-btn";
+    b.textContent = "\u2630 Note templates";
+    b.onclick = function () { ddNotePanel(ta, DD_NOTE_MAP[id]); };
+    if (ta.parentNode) ta.parentNode.appendChild(b);
+  });
+}
+window.ddNotesAttach = ddNotesAttach;
+
+
+// ============ ADDED: signature capture, location stamp, integrity hash ============
+
+/* compact SHA-256 over a string -> hex. Used for the record verification code. */
+function ppwSha(str) {
+  function rr(v, a) { return (v >>> a) | (v << (32 - a)); }
+  var K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+  0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+  0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+  0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+  0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+  0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+  0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+  0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  var H = [1779033703,3144134277,1013904242,2773480762,1359893119,2600822924,528734635,1541459225];
+  var u = unescape(encodeURIComponent(String(str))), l = u.length * 8, b = [], i, j, w = [];
+  for (i = 0; i < u.length; i++) b[i >> 2] |= u.charCodeAt(i) << ((3 - i % 4) * 8);
+  b[l >> 5] |= 0x80 << (24 - l % 32); b[((l + 64 >> 9) << 4) + 15] = l;
+  for (i = 0; i < b.length; i += 16) {
+    var a = H[0], bb = H[1], c = H[2], d2 = H[3], e = H[4], f = H[5], g = H[6], h = H[7], t1, t2;
+    for (j = 0; j < 64; j++) {
+      if (j < 16) w[j] = b[i + j] | 0;
+      else {
+        var g0 = w[j - 15], g1 = w[j - 2];
+        w[j] = (w[j - 16] + (rr(g0,7)^rr(g0,18)^(g0>>>3)) + w[j - 7] + (rr(g1,17)^rr(g1,19)^(g1>>>10))) | 0;
+      }
+      t1 = (h + (rr(e,6)^rr(e,11)^rr(e,25)) + ((e & f) ^ (~e & g)) + K[j] + w[j]) | 0;
+      t2 = ((rr(a,2)^rr(a,13)^rr(a,22)) + ((a & bb) ^ (a & c) ^ (bb & c))) | 0;
+      h = g; g = f; f = e; e = (d2 + t1) | 0; d2 = c; c = bb; bb = a; a = (t1 + t2) | 0;
+    }
+    H[0]=(H[0]+a)|0;H[1]=(H[1]+bb)|0;H[2]=(H[2]+c)|0;H[3]=(H[3]+d2)|0;
+    H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+  }
+  var out = "";
+  for (i = 0; i < 8; i++) out += ("00000000" + (H[i] >>> 0).toString(16)).slice(-8);
+  return out;
+}
+
+var PPW_SIG = { member: null, tech: null };
+var PPW_GEO = null;
+
+/* ---- signature pads ---- */
+function ppwPad(canvasId, who) {
+  var c = document.getElementById(canvasId);
+  if (!c || c.dataset.ready) return;
+  c.dataset.ready = "1";
+  var ratio = window.devicePixelRatio || 1;
+  var w = c.clientWidth || 300, hgt = 150;
+  c.width = Math.round(w * ratio); c.height = Math.round(hgt * ratio);
+  c.style.height = hgt + "px";
+  var x = c.getContext("2d");
+  x.scale(ratio, ratio);
+  x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, w, hgt);
+  x.lineWidth = 2.2; x.lineCap = "round"; x.lineJoin = "round"; x.strokeStyle = "#0B1F3A";
+
+  var drawing = false, last = null, drew = false;
+  function pt(e) {
+    var r = c.getBoundingClientRect();
+    return { x: e.clientX - r.left, y: e.clientY - r.top };
+  }
+  c.addEventListener("pointerdown", function (e) {
+    e.preventDefault(); drawing = true; last = pt(e);
+    try { c.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  c.addEventListener("pointermove", function (e) {
+    if (!drawing) return;
+    e.preventDefault();
+    var p = pt(e);
+    x.beginPath(); x.moveTo(last.x, last.y); x.lineTo(p.x, p.y); x.stroke();
+    last = p; drew = true;
+    PPW_SIG[who] = { url: c.toDataURL("image/jpeg", 0.92), w: c.width, h: c.height,
+                     at: new Date().toISOString() };
+    ppwSigState();
+  });
+  ["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) {
+    c.addEventListener(ev, function () { drawing = false; });
+  });
+  c.ddClear = function () {
+    x.fillStyle = "#FFFFFF"; x.fillRect(0, 0, w, hgt);
+    x.strokeStyle = "#0B1F3A";
+    PPW_SIG[who] = null; drew = false; ppwSigState();
+  };
+}
+function ppwClearSig(which) {
+  var c = document.getElementById(which === "member" ? "sigMember" : "sigTech");
+  if (c && c.ddClear) c.ddClear();
+}
+
+function ppwSigState() {
+  var m = document.getElementById("sigStateM"), t = document.getElementById("sigStateT");
+  if (m) { m.textContent = PPW_SIG.member ? "Captured" : "Not signed"; m.className = "pill " + (PPW_SIG.member ? "ok" : ""); }
+  if (t) { t.textContent = PPW_SIG.tech ? "Captured" : "Not signed"; t.className = "pill " + (PPW_SIG.tech ? "ok" : ""); }
+}
+
+/* ---- location stamp ---- */
+function ppwGeo() {
+  var out = document.getElementById("geoOut");
+  if (!navigator.geolocation) {
+    if (out) out.textContent = "This device will not provide a location.";
+    return;
+  }
+  if (!window.isSecureContext) {
+    if (out) out.textContent = "Location needs a secure (https) connection. Not available here.";
+    return;
+  }
+  if (!confirm("Record where this device is right now?\n\n" +
+               "This captures the technician device's coordinates and accuracy at the moment of signing, " +
+               "and prints them on the member's copy. Tell the member before you tap OK.")) return;
+  if (out) out.textContent = "Getting location\u2026";
+  navigator.geolocation.getCurrentPosition(function (pos) {
+    PPW_GEO = {
+      lat: pos.coords.latitude, lng: pos.coords.longitude,
+      acc: pos.coords.accuracy, at: new Date(pos.timestamp).toISOString()
+    };
+    if (out) {
+      out.innerHTML = "<b>Recorded.</b> " + PPW_GEO.lat.toFixed(5) + ", " + PPW_GEO.lng.toFixed(5) +
+        " &plusmn; " + Math.round(PPW_GEO.acc) + " m, at " + new Date(PPW_GEO.at).toLocaleString() +
+        "<br><span style=\"opacity:.75\">This is where the device was, within that accuracy. " +
+        "It is not proof of who signed.</span>";
+    }
+  }, function (err) {
+    if (out) out.textContent = "Location not recorded: " +
+      (err && err.code === 1 ? "permission was refused." : "the device could not get a fix.");
+  }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+}
+function ppwGeoClear() {
+  PPW_GEO = null;
+  var out = document.getElementById("geoOut");
+  if (out) out.textContent = "No location recorded.";
+}
+
+/* ---- the verification code: a hash of the record as printed ---- */
+function ppwRecordHash() {
+  var parts = [
+    v("p_name"), v("p_addr"), v("p_city"), v("p_state"), v("p_wo"), v("p_date"),
+    v("p_in"), v("p_out"), v("p_tech"), v("p_dlr"), v("p_type"), v("p_ask"), v("p_work"),
+    v("p_permit"), v("p_open"), v("p_owner"), v("p_due"), v("p_case"), v("p_sig"), v("p_rel"),
+    JSON.stringify(ppwReadRows()),
+    ["t_comm","t_walk","t_siren","t_batt","t_app","t_place","e_arm","e_app","e_false","e_code",
+     "e_test","e_support","i_lic","i_card","i_id","i_mon"].map(function (k) { return chk(k) ? 1 : 0; }).join(""),
+    PPW_SIG.member ? PPW_SIG.member.at : "",
+    PPW_SIG.tech ? PPW_SIG.tech.at : "",
+    PPW_GEO ? (PPW_GEO.lat.toFixed(6) + "," + PPW_GEO.lng.toFixed(6) + "," + PPW_GEO.at) : "",
+    (window.DD_USER && window.DD_USER.id) || ""
+  ];
+  return ppwSha(parts.join("|")).slice(0, 16).toUpperCase().replace(/(.{4})/g, "$1 ").trim();
+}
+window.ppwPad = ppwPad; window.ppwClearSig = ppwClearSig;
+window.ppwGeo = ppwGeo; window.ppwGeoClear = ppwGeoClear;
+
+function ppwSeed() {
+  ppwLegalStatus();
+  var d = el("p_date"); if (d && !d.value) d.value = new Date().toISOString().slice(0, 10);
+  var t = el("p_tech");
+  if (t && !t.value && window.DD_USER && window.DD_USER.name) t.value = window.DD_USER.name;
+}
+
+document.addEventListener("ddauth:open", function () { ppwSeed();
+  try { ppwPad("sigMember","member"); ppwPad("sigTech","tech"); ppwSigState(); } catch (e) {} try { ddNotesAttach(); } catch (e) {} });
+
+(function () {
+  try {
+    var v2 = localStorage.getItem("aaa.ppw.theme");
+    if (v2 === "dark") { document.documentElement.setAttribute("data-theme", "dark"); }
+    var b = el("ppwThemeBtn");
+    if (b) b.textContent = document.documentElement.getAttribute("data-theme") === "dark" ? "LIGHT" : "DARK";
+  } catch (e) {}
+  ppwDocRows();
+  for (var i = 0; i < 3; i++) ppwAddRow();
+  try { ppwPad('sigMember','member'); ppwPad('sigTech','tech'); ppwSigState(); } catch (e) {}
+  try { ddNotesAttach(); } catch (e) {}
+  ppwSeed();
+  window.addEventListener("beforeunload", function (e) {
+    if (v("p_name") || ppwReadRows().length) { e.preventDefault(); e.returnValue = ""; }
+  });
+})();
+
+function boot() { ppwSeed(); }
+window.ppwAddRow = ppwAddRow; window.ppwPrint = ppwPrint; window.ppwCopy = ppwCopy;
+window.ppwClear = ppwClear; window.ppwTheme = ppwTheme;
+
+</script>
+<script>
+
+
+(function () {
+  "use strict";
+  /* ===========================================================
+   DDAuth crypto — SHA-256 / HMAC-SHA256 / PBKDF2-HMAC-SHA256
+   Pure JS, byte-array based. Used when WebCrypto is unavailable
+   (file:// on a phone). Identical output to Python hashlib.
+   =========================================================== */
+var DDC = (function () {
+  var K = [
+    0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+
+  function rr(x, n) { return (x >>> n) | (x << (32 - n)); }
+
+  function sha256(bytes) {
+    var H = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var l = bytes.length, bl = l * 8;
+    var withPad = new Uint8Array((((l + 8) >> 6) + 1) * 64);
+    withPad.set(bytes); withPad[l] = 0x80;
+    var dv = new DataView(withPad.buffer);
+    dv.setUint32(withPad.length - 4, bl >>> 0, false);
+    dv.setUint32(withPad.length - 8, Math.floor(bl / 4294967296), false);
+    var w = new Int32Array(64);
+    for (var i = 0; i < withPad.length; i += 64) {
+      var j;
+      for (j = 0; j < 16; j++) w[j] = dv.getInt32(i + j * 4, false);
+      for (j = 16; j < 64; j++) {
+        var g0 = w[j - 15], g1 = w[j - 2];
+        var s0 = rr(g0, 7) ^ rr(g0, 18) ^ (g0 >>> 3);
+        var s1 = rr(g1, 17) ^ rr(g1, 19) ^ (g1 >>> 10);
+        w[j] = (w[j - 16] + s0 + w[j - 7] + s1) | 0;
+      }
+      var a = H[0], b = H[1], c = H[2], d = H[3], e = H[4], f = H[5], g = H[6], h = H[7];
+      for (j = 0; j < 64; j++) {
+        var S1 = rr(e, 6) ^ rr(e, 11) ^ rr(e, 25);
+        var ch = (e & f) ^ (~e & g);
+        var t1 = (h + S1 + ch + K[j] + w[j]) | 0;
+        var S0 = rr(a, 2) ^ rr(a, 13) ^ rr(a, 22);
+        var mj = (a & b) ^ (a & c) ^ (b & c);
+        var t2 = (S0 + mj) | 0;
+        h = g; g = f; f = e; e = (d + t1) | 0; d = c; c = b; b = a; a = (t1 + t2) | 0;
+      }
+      H[0] = (H[0] + a) | 0; H[1] = (H[1] + b) | 0; H[2] = (H[2] + c) | 0; H[3] = (H[3] + d) | 0;
+      H[4] = (H[4] + e) | 0; H[5] = (H[5] + f) | 0; H[6] = (H[6] + g) | 0; H[7] = (H[7] + h) | 0;
+    }
+    var out = new Uint8Array(32), o = new DataView(out.buffer);
+    for (var k = 0; k < 8; k++) o.setUint32(k * 4, H[k] >>> 0, false);
+    return out;
+  }
+
+  function hmac(key, msg) {
+    if (key.length > 64) key = sha256(key);
+    var ip = new Uint8Array(64), op = new Uint8Array(64);
+    ip.fill(0x36); op.fill(0x5c);
+    for (var i = 0; i < key.length; i++) { ip[i] ^= key[i]; op[i] ^= key[i]; }
+    var inner = new Uint8Array(64 + msg.length);
+    inner.set(ip); inner.set(msg, 64);
+    var ih = sha256(inner);
+    var outer = new Uint8Array(96);
+    outer.set(op); outer.set(ih, 64);
+    return sha256(outer);
+  }
+
+  function pbkdf2(pwBytes, saltBytes, iters, dkLen) {
+    var out = new Uint8Array(dkLen), pos = 0, block = 1;
+    while (pos < dkLen) {
+      var salt1 = new Uint8Array(saltBytes.length + 4);
+      salt1.set(saltBytes);
+      salt1[saltBytes.length] = (block >>> 24) & 0xff;
+      salt1[saltBytes.length + 1] = (block >>> 16) & 0xff;
+      salt1[saltBytes.length + 2] = (block >>> 8) & 0xff;
+      salt1[saltBytes.length + 3] = block & 0xff;
+      var u = hmac(pwBytes, salt1);
+      var t = u.slice(0);
+      for (var i = 1; i < iters; i++) {
+        u = hmac(pwBytes, u);
+        for (var j = 0; j < 32; j++) t[j] ^= u[j];
+      }
+      var take = Math.min(32, dkLen - pos);
+      out.set(t.subarray(0, take), pos);
+      pos += take; block++;
+    }
+    return out;
+  }
+
+  function utf8(str) {
+    var s = unescape(encodeURIComponent(String(str)));
+    var a = new Uint8Array(s.length);
+    for (var i = 0; i < s.length; i++) a[i] = s.charCodeAt(i);
+    return a;
+  }
+  function hex(bytes) {
+    var s = '';
+    for (var i = 0; i < bytes.length; i++) s += ('0' + bytes[i].toString(16)).slice(-2);
+    return s;
+  }
+  function unhex(h) {
+    var a = new Uint8Array(h.length / 2);
+    for (var i = 0; i < a.length; i++) a[i] = parseInt(h.substr(i * 2, 2), 16);
+    return a;
+  }
+
+  /** Returns a Promise of the hex derived key. Uses WebCrypto when available. */
+  function derive(passphrase, saltHex, iters) {
+    var pw = utf8(passphrase), salt = unhex(saltHex);
+    var subtle = (typeof crypto !== 'undefined' && crypto.subtle) ? crypto.subtle : null;
+    if (subtle) {
+      return subtle.importKey('raw', pw, { name: 'PBKDF2' }, false, ['deriveBits'])
+        .then(function (key) {
+          return subtle.deriveBits(
+            { name: 'PBKDF2', salt: salt, iterations: iters, hash: 'SHA-256' }, key, 256);
+        })
+        .then(function (bits) { return hex(new Uint8Array(bits)); })
+        .catch(function () { return hex(pbkdf2(pw, salt, iters, 32)); });
+    }
+    return new Promise(function (res) {
+      setTimeout(function () { res(hex(pbkdf2(pw, salt, iters, 32))); }, 10);
+    });
+  }
+
+  /** Constant-time-ish comparison of two hex strings. */
+  function equal(a, b) {
+    if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+    var diff = 0;
+    for (var i = 0; i < a.length; i++) diff |= (a.charCodeAt(i) ^ b.charCodeAt(i));
+    return diff === 0;
+  }
+
+  return { sha256: sha256, hmac: hmac, pbkdf2: pbkdf2, derive: derive,
+           utf8: utf8, hex: hex, unhex: unhex, equal: equal };
+})();
+
+
+
+
+  var TOOL   = "ppw";
+  var TOOLNM = "Onsite Paperwork";
+  var USERS = [{"u":"wayne.jordan","n":"Wayne Jordan","r":"Owner","s":"c005136031db3714bce2e360833f7f5b","i":50000,"h":"583877c7303d0e7bdbd333ef1e059360dbee9d2ae0da20cef7d7c83dab3d73fc","st":"active","exp":"","rot":false},{"u":"field.ops","n":"National Field Ops","r":"Admin","s":"20673e98bfae4b131db26d07ae336d6b","i":50000,"h":"b98c04c44c41f03c8dace0ca5a43c9f61f7d489e2cf41abb4ffe856a02d9b864","st":"active","exp":"","rot":false},{"u":"jaime.moses","n":"Jaime Moses","r":"Manager","s":"71d394f2a196ac1686156d684db829c6","i":50000,"h":"50ab92d28854c9f479362c1f5294dff1ce5fd263f635ce8656cfbed86fd7c4a7","st":"active","exp":"","rot":false},{"u":"sam.wertanen","n":"Sam Wertanen","r":"Manager","s":"3d28d2fe998267789ff0f7defa6b504c","i":50000,"h":"c633d6334ce1d89c220f15f989408e3f2346df68c8bbda39b8197b0af449e788","st":"active","exp":"","rot":false},{"u":"anne.chille","n":"Anne Chille","r":"Manager","s":"bff9b1060b70004bd58f153d758e1116","i":50000,"h":"71a5918c13f5eb50c7ff6eea71c208790aea81a6f53ab55ade181284fda12c26","st":"active","exp":"","rot":false},{"u":"scott.cummings","n":"Scott Cummings","r":"Manager","s":"c33bcadf5be98eb3a2e43b9c68c12c35","i":50000,"h":"08f0321540f4f45d65f74428f617267accfcb39a97578f50230a02498ba17a52","st":"active","exp":"","rot":false},{"u":"maura.rocha","n":"Maura Rocha","r":"Coordinator","s":"1c6752b270e44902baf8d40481838314","i":50000,"h":"0886fbc7c23035948009e39734d58ecd8bb44432dbbe419e45ec1df5a573abac","st":"active","exp":"","rot":false},{"u":"javier.huerta","n":"Javier Huerta","r":"Coordinator","s":"d0c14a00315a7459e41cb737585c023f","i":50000,"h":"8cb705c9bd1160decaa769cf1d93dde5e922b6b278e24b31c214265a29934329","st":"active","exp":"","rot":false},{"u":"sales.rep.01","n":"Sales Rep 01","r":"Rep","s":"93fc369be3ae717c98bd6c6766df661f","i":50000,"h":"6a2f12de14897207a5860fa57e5bc917ab7c4ca2bfdea4fd8cf1619cf468b540","st":"active","exp":"","rot":false},{"u":"nik.trial","n":"Nik (trial)","r":"Rep","s":"54b88792b3fca6baa899581b660c3acf","i":50000,"h":"7a4fafeb0231e55ca1ae555c94ca92a0c36675e79a28d92b56f5b325de089c12","st":"active","exp":"","rot":false},{"u":"nikole.mcbain","n":"Nikole McBain","r":"Manager","s":"96ff1bf93ef81503e5a1a3c06c5bc6bc","i":50000,"h":"a3988b105f7aa2225145b196f81140da854c94510711bceeff5896f9aefc83d6","st":"active","exp":"","rot":false},{"u":"nickk92988@gmail.com","n":"Nick K \u2014 Admin","r":"Admin","s":"d45d16642658de33ceedda29616d63c8","i":50000,"h":"01a538b0e10a7657f18fc5741579a6c56fc11f60e5e7d8e5984e20111ced661b","st":"active","exp":"","rot":false},{"u":"nick.tech","n":"Nick K \u2014 Technician","r":"Dealer","s":"ab1199e1ceb856247e736e32e8e42cb7","i":50000,"h":"900231b28bac62ca76b040530313b65f536b592f49824ddac84b446d799d1a77","st":"active","exp":"","rot":false},{"u":"allin.principal","n":"All In \u2014 Dealer Principal","r":"Dealer","s":"b2d9b72ce2ac2ae26c62212193fed299","i":50000,"h":"148934e5750a93f1f7dd4b654bdf4f7e2d577562fb9e5165831fd4e7ed09f5a6","st":"active","exp":"","rot":false},{"u":"allin.nick","n":"Nick K \u2014 All In Smart Home","r":"Dealer","s":"ac4802aaa73125987051e6a7059560f6","i":50000,"h":"024c4ce8b50919a40f6bd8fd94621995854b4261dba68fed2633f1e99cbf594d","st":"active","exp":"","rot":false},{"u":"allin.jake","n":"Jake \u2014 All In Smart Home","r":"Dealer","s":"cf27f584277edc22c1ded8f74e1e8e81","i":50000,"h":"12fffaf3f8caf85a6164417d444ac38e343c13f0292710c7b941309e47f8be7f","st":"active","exp":"","rot":false},{"u":"allin.larry","n":"Larry \u2014 All In Smart Home","r":"Dealer","s":"d4b7a370fe7f94be33f0e2fab539dc57","i":50000,"h":"660658ecfae6bff2a2891ca958afe3d678275827acb87fdcba03cd352a0c6ba1","st":"active","exp":"","rot":false},{"u":"allin.scott","n":"Scott \u2014 All In Smart Home","r":"Dealer","s":"56caec9704cd4666894cd8044857ab3e","i":50000,"h":"cdc068a36ed283c3b84e3b99c616548ed3e12530eb80ffd3862232745cffc81f","st":"active","exp":"","rot":false},{"u":"allin.joe","n":"Joe \u2014 All In Smart Home","r":"Dealer","s":"40e1c7cb09699f2134fa037ff1439b5f","i":50000,"h":"18821ff5fbeefa537f494421972fb377e5865a1a0f8cd0a30df800e811913348","st":"active","exp":"","rot":false},{"u":"lvls.daniel","n":"Daniel \u2014 LVLS","r":"Dealer","s":"8dc0cbe61519f4ea664b648cdae6a336","i":50000,"h":"ab1e3f42c035667c4c196147b9341dc7e56deedc7499a8797f42a6aa5a0d0fa6","st":"active","exp":"","rot":false},{"u":"lvls.tech","n":"LVLS \u2014 Technician","r":"Dealer","s":"ac3cfa53e08e39f477d478108f4d5849","i":50000,"h":"cb1411f87327a663708610b64afc0f836a4516d400d8f61b061eca795815b6d3","st":"active","exp":"","rot":false},{"u":"valley.tech","n":"Valley \u2014 Technician","r":"Dealer","s":"193e0a70e8199a691c85a7dee069bb30","i":50000,"h":"289b026022d657f1e8d4e7cff02b4f0d7cb67dc97b899525b7af5d48016284c0","st":"active","exp":"","rot":false},{"u":"admin.tech","n":"Technical Admin","r":"Admin","s":"80842d19b4300c662d9070b1ab2ffdd2","i":50000,"h":"0443679df3ac1af844c56e01d65fd018e43d81719fe24485b8cf03ea265c377b","st":"active","exp":"","rot":false},{"u":"mang.tech","n":"Technician Manager","r":"DealerAdmin","s":"1f1e9db6ca63a2dd03f8002335980ae9","i":50000,"h":"f14831631ccccbf98d34a00f5f7d190b2486fc38696f048367d0520470bb681b","st":"active","exp":"","rot":false},{"u":"exec.meredith","n":"Meredith \u2014 Executive","r":"Exec","s":"48b78ce7b1a7ad5af2a02881cfdceb4e","i":50000,"h":"dc52bc2f54bbacd3baf76f8b058f13f32c71fa73b6a716f6bf9fb34698f65b41","st":"active","exp":"","rot":false},{"u":"exec.onyeka","n":"Onyeka \u2014 Executive","r":"Exec","s":"45af64d7bb7b67dbbcc160a3ac0c294e","i":50000,"h":"f62c7a5c6a8769c3750bdfb0442c3c09f40ba7aca059e919075ae09b06173bea","st":"active","exp":"","rot":false},{"u":"exec.aaron","n":"Aaron \u2014 Executive","r":"Exec","s":"fe13c6dc8bfc8c2339ebee9694532deb","i":50000,"h":"755f2c3f9a55d635a2adb8dabdaafd464a6d95926429bea6f0afcd1499a94b77","st":"active","exp":"","rot":false},{"u":"exec.bill","n":"Bill \u2014 Executive","r":"Exec","s":"b6366a8f286ce4a3cdc0ce33ed391443","i":50000,"h":"4362584ecd3265a13553b7b2ca39d4c54d4a0b52b81a996a9b61ca6a79436a77","st":"active","exp":"","rot":false},{"u":"exec.kristi","n":"Kristi \u2014 Executive","r":"Exec","s":"2f60d7211e45ea1cfbd6611211313ccb","i":50000,"h":"91adbc5600268d3d836c04a6cfaa5a20c060c2185d8d5774ba0879d57eabc9fd","st":"active","exp":"","rot":false},{"u":"exec.cathy","n":"Cathy \u2014 Executive","r":"Exec","s":"ee8274c897e5370677ce7dad542806b0","i":50000,"h":"c7c1e6e7eb55929f9c9e167b15db652f1a55120559c6cdaff363ed61f3624961","st":"active","exp":"","rot":false},{"u":"mgr.anne","n":"Anne \u2014 Manager","r":"Manager","s":"be49670e493f841fda7cb0e07b797100","i":50000,"h":"08315f1ffd5a1c9255fca6e4d870d61a0feff52f891fe44b98f2c0c7de795fb7","st":"active","exp":"","rot":false},{"u":"mgr.nikole","n":"Nikole \u2014 Manager","r":"Manager","s":"fb67d6146b22fdbccb3b6f21ffac699e","i":50000,"h":"2776e9c0f4828f0b163646de91a37c2ce382ac20cd8deade2e26f8cd3234c2f4","st":"active","exp":"","rot":false},{"u":"mgr.ric","n":"Ric \u2014 Manager","r":"Manager","s":"987b90391a4a12be8b06705d1bbd4f8f","i":50000,"h":"721c545f2017434cad2b5cdc4250f27ba1671d03c244d4ddccc0850a7129f254","st":"active","exp":"","rot":false},{"u":"mgr.shane","n":"Shane \u2014 Manager","r":"Manager","s":"bf0a76ab42ac961f0deb44affefe68a6","i":50000,"h":"7cb9e708f0da4cb96538b6b0e0972115915103c11af0f39142b82affc518c2ce","st":"active","exp":"","rot":false},{"u":"mgr.lou","n":"Lou \u2014 Manager","r":"Manager","s":"8e60f1a2c6fd6a583b39e851e230ffcf","i":50000,"h":"bda45a3f7caf4d54ea9ea08f2a5a7f50f7b9d4d0c74d7cbf99ce4986774cf5b7","st":"active","exp":"","rot":false},{"u":"mgr.brittany","n":"Brittany \u2014 Manager","r":"Manager","s":"8eeaf9b1cf653db3dfecd7c67d541100","i":50000,"h":"99282acc1e9257100cb546d8827e8e2e8064d58ca885be9244dbbbbf3e41fee6","st":"active","exp":"","rot":false},{"u":"mgr.mercedes","n":"Mercedes \u2014 Manager","r":"Manager","s":"9129bc37eea74c2e9de9750c394bf903","i":50000,"h":"225658e3b8a0a82c5a849d70efa98107223ebe85b2112648c668cb54e821dac2","st":"active","exp":"","rot":false},{"u":"mgr.angel","n":"Angel \u2014 Manager","r":"Manager","s":"4608ca41e011975f8a44206456e85c0b","i":50000,"h":"9421b61f7e813255ab4188cd5d7ec753b9d423582afbcb3d0a256a98d0d3624e","st":"active","exp":"","rot":false},{"u":"mgr.abdi","n":"Abdi \u2014 Manager","r":"Manager","s":"6700177050b1b382d4e27c6485a95d2a","i":50000,"h":"e4d85fb9b48697d251f2d20ecfd21e74d6d6a638ed9b0b0e5ad6018e49d121a2","st":"active","exp":"","rot":false},{"u":"mgr.scott","n":"Scott \u2014 Manager","r":"Manager","s":"ad0569b380ff8fbb5181fb76eabdc1da","i":50000,"h":"e292d236b2470c0e7cb495438cfe45e62ed03af9ff6870b7ef73e288288e022b","st":"active","exp":"","rot":false},{"u":"mgr.sam","n":"Sam \u2014 Manager","r":"Manager","s":"33e1b348a0fb248c563e5c284384d062","i":50000,"h":"fe18961326b0a7ef3b9c74f30d5e2fee49a7cbb027c620ce1d209a68a98e4b1b","st":"active","exp":"","rot":false},{"u":"mgr.jaime","n":"Jaime \u2014 Manager","r":"Manager","s":"70959a2da056adb3ada4e7261ff79b89","i":50000,"h":"2a1b48d53253fc3598aa79778822129bb28d9d363f880702e0c24a3e7885ca4e","st":"active","exp":"","rot":false},{"u":"coord.erica","n":"Erica \u2014 Coordinator","r":"Coordinator","s":"c3be9ec4c50d887abc7612a9faab8556","i":50000,"h":"7aca65bafa56c50853eee062415941a315a7c651d51c8e368e8d01e99e392898","st":"active","exp":"","rot":false},{"u":"coord.maura","n":"Maura \u2014 Coordinator","r":"Coordinator","s":"726380e645a6b30a76d96ce13ec1f205","i":50000,"h":"7dcf9e96d3f99ebf772d7956db03019879c8b47f9cd886b54841019d1a621670","st":"active","exp":"","rot":false},{"u":"coord.javi","n":"Javi \u2014 Coordinator","r":"Coordinator","s":"1db2a4938b655d2a661d76daeb9615df","i":50000,"h":"f05c9c17d9a8b4cdf619bf2c17f4980a8911b4f9434c679dd1942302d5f85817","st":"active","exp":"","rot":false},{"u":"coord.meggan","n":"Meggan \u2014 Coordinator","r":"Coordinator","s":"ef86ef5eae8f6529bbcd4cabe26ee35f","i":50000,"h":"68949937ba4a12ef0272ea0dc2e3a0ac6142780b094048496b5aeaabb53afc6d","st":"active","exp":"","rot":false},{"u":"coord.dennis","n":"Dennis \u2014 Coordinator","r":"Coordinator","s":"d21e28148f8c5f9cc403b84024a0b8c7","i":50000,"h":"e9932119febd1ba2e12f4df7ad956976ffc47d5f417c847bbdf1df9b96868d50","st":"active","exp":"","rot":false},{"u":"coord.steve.m","n":"Steve M \u2014 Coordinator","r":"Coordinator","s":"b5c1268a682ffd8a09896fc0d2eeab0b","i":50000,"h":"b463b5b9c50441c129b45de42fe8b73678369f4ca321adb7a00d66f91c41044a","st":"active","exp":"","rot":false},{"u":"coord.steve.r","n":"Steve R \u2014 Coordinator","r":"Coordinator","s":"561a443dc0fab9250c3c2ceb29b46805","i":50000,"h":"d26e714270e542345ebd4f62e5d98c1013b02e438205d116a08558b8e4fbe542","st":"active","exp":"","rot":false},{"u":"wayne.admin","n":"Wayne Jordan \u2014 Admin","r":"Admin","s":"c8e9c34fb23216c4e68336e8df78fd90","i":50000,"h":"166bf9d81a563aa37600247801baa2fccbfe3d1bd1d054060ebfef438aa525a6","st":"active","exp":"","rot":false},{"u":"jaime.admin","n":"Jaime Moses \u2014 Admin","r":"Admin","s":"cc82feb0fabc10eb3c4be30960c2a9bc","i":50000,"h":"236bc758d49a21ff61a8dde980813dc5252f86b4677dfa16db66c35f9401ca55","st":"active","exp":"","rot":false},{"u":"demo.mwg","n":"Demonstration Account","r":"Rep","s":"709bc87d21d5a73b5e592d12bad8823e","i":50000,"h":"9790537088e3de982464bae0896cca539a746b30eae2d33105f4d3a325956f1a","st":"active","exp":"","rot":false}];
+  var DD_ROLE_CAPS = {"Owner":{"manage":true,"accounts":true,"logs":true,"dealers":"all","dash":"all","publish":true},"Exec":{"manage":false,"accounts":false,"logs":false,"dealers":"view","dash":"all","publish":false},"Admin":{"manage":true,"accounts":false,"logs":true,"dealers":"all","dash":"all","publish":false},"Manager":{"manage":false,"accounts":false,"logs":false,"dealers":"all","dash":"team","publish":false},"Coordinator":{"manage":false,"accounts":false,"logs":false,"dealers":"all","dash":"queue","publish":false},"Admin-Ltd":{"manage":false,"accounts":false,"logs":false,"dealers":"view","dash":"queue","publish":false},"DealerAdmin":{"manage":false,"accounts":false,"logs":false,"dealers":"all","dash":"queue","publish":false},"SalesManager":{"manage":false,"accounts":false,"logs":false,"dealers":"view","dash":"team","publish":false},"Rep":{"manage":false,"accounts":false,"logs":false,"dealers":"own","dash":"own","publish":false},"Dealer":{"manage":false,"accounts":false,"logs":false,"dealers":"own","dash":"own","publish":false}};
+  var SESSION_HOURS = 12;
+  var IDLE_MIN = 30;
+  var SKEY = "dd.sess.mwg";
+  var LKEY = "dd.log." + TOOL;
+  var PKEY = "dd.pk.mwg";
+  var FKEY = "dd.fail.mwg";
+  var LOG_MAX = 300;
+
+  var ERR = {
+    100: "Signed in.",
+    200: "Session resumed.",
+    401: "User ID not recognised.",
+    402: "Passphrase not correct.",
+    403: "This account is disabled. Contact National Field Operations.",
+    404: "This account has expired. Contact National Field Operations.",
+    405: "Passphrase rotation is overdue. Contact National Field Operations before signing in.",
+    429: "Too many attempts. Locked for a moment.",
+    440: "Session expired. Sign in again.",
+    441: "Signed out after inactivity.",
+    450: "No device key is enrolled on this device.",
+    451: "Device key was not accepted.",
+    460: "Signed out.",
+    500: "This browser cannot run the sign-in check.",
+    501: "This device is blocking storage, so the session cannot be held."
+  };
+
+  var gate = document.getElementById("ddAuth");
+  var iu = document.getElementById("ddAuthUser");
+  var ip = document.getElementById("ddAuthPass");
+  var go = document.getElementById("ddAuthGo");
+  var kb = document.getElementById("ddAuthKey");
+  var msg = document.getElementById("ddAuthMsg");
+  var meta = document.getElementById("ddAuthMeta");
+
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } }
+  function lsDel(k) { try { localStorage.removeItem(k); } catch (e) {} }
+
+  // ---------- audit log ----------
+  var DB = null, UID = null;
+  try {
+    if (window.claude && typeof window.claude.use === "function") {
+      Promise.resolve(window.claude.use("db")).then(function (d) { DB = d; }).catch(function () {});
+      Promise.resolve(window.claude.use("user")).then(function (u) {
+        if (u) return u.id().then(function (v) { UID = v; });
+      }).catch(function () {});
+    }
+  } catch (e) {}
+
+  function logEvent(user, event, code, detail) {
+    var rec = {
+      ts: new Date().toISOString(), tool: TOOL, user: user || "-",
+      event: event, code: code, detail: detail || "",
+      agent: (navigator.userAgent || "").slice(0, 120)
+    };
+    try {
+      var arr = JSON.parse(lsGet(LKEY) || "[]");
+      arr.push(rec);
+      if (arr.length > LOG_MAX) arr = arr.slice(arr.length - LOG_MAX);
+      lsSet(LKEY, JSON.stringify(arr));
+    } catch (e) {}
+    try {
+      if (DB && UID) {
+        DB.doc("logs/" + UID + "/events/e" + Date.now() + Math.floor(Math.random() * 1000))
+          .set(rec).catch(function () {});
+      }
+    } catch (e) {}
+    return rec;
+  }
+  window.ddAuthLog = function () { try { return JSON.parse(lsGet(LKEY) || "[]"); } catch (e) { return []; } };
+  window.ddAuthLogCsv = function () {
+    var rows = window.ddAuthLog();
+    var head = ["Timestamp", "Tool", "User", "Event", "Code", "Detail", "Agent"];
+    var out = [head.join(",")];
+    rows.forEach(function (r) {
+      out.push([r.ts, r.tool, r.user, r.event, r.code, r.detail, r.agent]
+        .map(function (v) { return '"' + String(v == null ? "" : v).replace(/"/g, '""') + '"'; }).join(","));
+    });
+    return out.join("\r\n");
+  };
+
+  function say(code, extra) {
+    var t = ERR[code] || "Unexpected error.";
+    msg.className = "dda-msg" + (code < 300 ? " ok" : "");
+    msg.innerHTML = '<span class="code">AUTH-' + code + '</span>' +
+      String(t + (extra ? " " + extra : "")).replace(/[<>]/g, "");
+  }
+
+  // ---------- lockout ----------
+  function failState() {
+    try { return JSON.parse(lsGet(FKEY) || '{"n":0,"until":0}'); } catch (e) { return { n: 0, until: 0 }; }
+  }
+  function failBump() {
+    var f = failState();
+    f.n++;
+    if (f.n >= 10) f.until = Date.now() + 15 * 60000;
+    else if (f.n >= 5) f.until = Date.now() + 60000;
+    lsSet(FKEY, JSON.stringify(f));
+    return f;
+  }
+  function failClear() { lsDel(FKEY); }
+
+  // ---------- session ----------
+  function sessionRead() {
+    var raw = lsGet(SKEY);
+    if (!raw) return null;
+    try {
+      var s = JSON.parse(raw);
+      if (!s || !s.u || !s.t) return null;
+      if (Date.now() - s.t > SESSION_HOURS * 3600000) { lsDel(SKEY); return { expired: 440 }; }
+      if (Date.now() - (s.a || s.t) > IDLE_MIN * 60000) { lsDel(SKEY); return { expired: 441 }; }
+      return s;
+    } catch (e) { return null; }
+  }
+  function sessionTouch() {
+    var s = sessionRead();
+    if (s && !s.expired) { s.a = Date.now(); lsSet(SKEY, JSON.stringify(s)); }
+  }
+  function sessionStart(user) {
+    var ok = lsSet(SKEY, JSON.stringify({ u: user.u, n: user.n, r: user.r, t: Date.now(), a: Date.now() }));
+    if (!ok) say(501);
+  }
+
+  function openApp(user, code) {
+    window.DD_USER = { id: user.u, name: user.n, role: user.r };
+    window.DD_GATE_ROLE = user.r;
+    window.DD_CAPS = DD_ROLE_CAPS[user.r] || DD_ROLE_CAPS["Rep"];
+    if (gate) gate.classList.add("hidden");
+    document.documentElement.style.overflow = "";
+    try {
+      var ap = document.getElementById("app");
+      if (ap && !ap.classList.contains("on")) { ap.classList.add("on"); if (typeof boot === "function") boot(); }
+    } catch (e) {}
+    chip(user);
+    try { ddSwitcher(user); } catch (e) {}
+    try { enrolChip(); } catch (e) {}
+    try { document.dispatchEvent(new CustomEvent("ddauth:open", { detail: window.DD_USER })); } catch (e) {}
+    logEvent(user.u, code === 200 ? "session_resume" : "login_success", code, user.r);
+  }
+
+  function chip(user) {
+    var c = document.getElementById("ddSessChip");
+    if (!c) {
+      c = document.createElement("button");
+      c.id = "ddSessChip"; c.type = "button"; c.className = "no-print";
+      c.addEventListener("click", function () {
+        if (confirm("Sign out of " + TOOLNM + "? Whoever opens it next needs their own account.")) window.ddSignOut();
+      });
+      document.body.appendChild(c);
+    }
+    c.textContent = (user.n || user.u) + " \u00b7 " + String(user.r).toUpperCase() + " \u00b7 SIGN OUT";
+    c.style.display = "block";
+  }
+
+  window.ddSignOut = function (code) {
+    var s = sessionRead();
+    logEvent(s && s.u, "logout", code || 460, "");
+    lsDel(SKEY);
+    window.DD_USER = null; window.DD_GATE_ROLE = "";
+    var c = document.getElementById("ddSessChip"); if (c) c.style.display = "none";
+    var kc = document.getElementById("ddKeyChip"); if (kc) kc.style.display = "none";
+    var ac = document.getElementById("ddAppChip"); if (ac) ac.style.display = "none";
+    if (gate) gate.classList.remove("hidden");
+    document.documentElement.style.overflow = "hidden";
+    if (ip) ip.value = "";
+    if (msg) { msg.className = "dda-msg"; msg.innerHTML = ""; }
+    if (code) say(code);
+    refreshKeyBtn();
+  };
+
+  // ---------- device key (WebAuthn) ----------
+  // 'checking' -> 'ok' | 'unsupported' | 'blocked'
+  var PK_STATE = "checking";
+  var PK_ASKED = "dd.pkasked.mwg";
+
+  function pkFramed() { try { return window.self !== window.top; } catch (e) { return true; } }
+
+  function pkProbe() {
+    if (!(window.PublicKeyCredential && navigator.credentials && navigator.credentials.create)) {
+      PK_STATE = "unsupported"; refreshKeyBtn(); return;
+    }
+    if (!window.isSecureContext) { PK_STATE = "unsupported"; refreshKeyBtn(); return; }
+    // A cross-origin frame is not permitted to create credentials unless the parent
+    // explicitly allows it. Offering enrolment there only produces a refusal.
+    if (pkFramed()) { PK_STATE = "blocked"; refreshKeyBtn(); return; }
+    try {
+      PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable()
+        .then(function (ok) { PK_STATE = ok ? "ok" : "unsupported"; refreshKeyBtn(); })
+        .catch(function () { PK_STATE = "unsupported"; refreshKeyBtn(); });
+    } catch (e) { PK_STATE = "unsupported"; refreshKeyBtn(); }
+  }
+
+  function pkAvailable() { return PK_STATE === "ok"; }
+  function pkStored() { try { return JSON.parse(lsGet(PKEY) || "null"); } catch (e) { return null; } }
+  function pkAsked() { return lsGet(PK_ASKED) === "1"; }
+  function pkMarkAsked() { lsSet(PK_ASKED, "1"); }
+  function refreshKeyBtn() {
+    if (!kb) return;
+    var st = pkStored();
+    if (st && PK_STATE !== "unsupported") {
+      kb.classList.remove("hidden");
+      kb.textContent = "Use device key (" + st.u + ")";
+    } else kb.classList.add("hidden");
+    enrolChip();
+  }
+
+  // A small, ignorable offer beside the sign-out chip. No pop-up, no repeat.
+  function enrolChip() {
+    var c = document.getElementById("ddKeyChip");
+    var show = !!(window.DD_USER && pkAvailable() && !pkStored());
+    if (!show) { if (c) c.style.display = "none"; return; }
+    if (!c) {
+      c = document.createElement("button");
+      c.id = "ddKeyChip"; c.type = "button"; c.className = "no-print";
+      c.style.cssText = "position:fixed;left:10px;bottom:46px;z-index:9998;background:#C8A951;color:#0B1F3A;" +
+        "border:1px solid #C8A951;border-radius:99px;padding:7px 13px;" +
+        "font:700 10px/1 Calibri,Arial,sans-serif;letter-spacing:1.2px;cursor:pointer";
+      c.textContent = "+ DEVICE KEY";
+      c.addEventListener("click", function () { window.ddEnrollKey(); });
+      document.body.appendChild(c);
+    }
+    c.style.display = "block";
+  }
+  function b64url(buf) {
+    var b = String.fromCharCode.apply(null, new Uint8Array(buf));
+    return btoa(b).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function unb64url(s) {
+    s = String(s).replace(/-/g, "+").replace(/_/g, "/");
+    while (s.length % 4) s += "=";
+    var b = atob(s), a = new Uint8Array(b.length);
+    for (var i = 0; i < b.length; i++) a[i] = b.charCodeAt(i);
+    return a;
+  }
+  window.ddEnrollKey = function () {
+    var s = sessionRead();
+    if (!s || s.expired) { alert("Sign in first."); return; }
+    if (PK_STATE === "blocked") {
+      alert("Device keys cannot be set up in this view.\n\n" +
+            "The tool is running inside a frame, and browsers do not allow credential enrolment there. " +
+            "Open the hosted copy on your own domain and it will work. Your passphrase works either way.");
+      return;
+    }
+    if (!pkAvailable()) {
+      alert("This device or browser does not support a device key. Your passphrase still works.");
+      return;
+    }
+    var ch = new Uint8Array(32);
+    (crypto.getRandomValues ? crypto.getRandomValues(ch) : ch);
+    navigator.credentials.create({
+      publicKey: {
+        challenge: ch,
+        rp: { name: "DanDDee " + TOOLNM },
+        user: { id: DDC.utf8(s.u), name: s.u, displayName: s.n || s.u },
+        pubKeyCredParams: [{ type: "public-key", alg: -7 }, { type: "public-key", alg: -257 }],
+        authenticatorSelection: { userVerification: "required" },
+        timeout: 60000, attestation: "none"
+      }
+    }).then(function (cred) {
+      lsSet(PKEY, JSON.stringify({ u: s.u, id: b64url(cred.rawId) }));
+      pkMarkAsked();
+      logEvent(s.u, "devicekey_enrolled", 100, "");
+      refreshKeyBtn();
+      alert("Device key enrolled. On this device you can sign in with Face ID, Touch ID, or your hardware key.\n\n" +
+            "It is bound to this device only. It does not replace your passphrase anywhere else.");
+    }).catch(function (err) {
+      var nm = (err && err.name) || "";
+      pkMarkAsked();
+      logEvent(s.u, "devicekey_failed", 451, nm);
+      if (nm === "NotAllowedError") {
+        alert("Device key not enrolled \u2014 the prompt was cancelled or timed out.\n\n" +
+              "Your passphrase still works. Tap + DEVICE KEY whenever you want to try again.");
+      } else if (nm === "NotSupportedError" || nm === "SecurityError" || nm === "AbortError") {
+        PK_STATE = "unsupported"; refreshKeyBtn();
+        alert("This device or browser will not set up a device key here.\n\n" +
+              "Your passphrase still works, and you will not be asked again on this device.");
+      } else {
+        alert("Device key not enrolled. Your passphrase still works.");
+      }
+    });
+  };
+  if (kb) kb.addEventListener("click", function () {
+    var st = pkStored();
+    if (!st) { say(450); return; }
+    var ch = new Uint8Array(32);
+    (crypto.getRandomValues ? crypto.getRandomValues(ch) : ch);
+    navigator.credentials.get({
+      publicKey: {
+        challenge: ch, timeout: 60000, userVerification: "required",
+        allowCredentials: [{ type: "public-key", id: unb64url(st.id) }]
+      }
+    }).then(function () {
+      var user = USERS.filter(function (x) { return x.u === st.u; })[0];
+      if (!user) { say(401); return; }
+      if (user.st !== "active") { say(403); logEvent(user.u, "login_blocked", 403, "devicekey"); return; }
+      failClear(); sessionStart(user); openApp(user, 100);
+    }).catch(function () {
+      say(451); logEvent(st.u, "login_fail", 451, "devicekey");
+    });
+  });
+
+  // ---------- sign in ----------
+  function attempt() {
+    var f = failState();
+    if (f.until && Date.now() < f.until) {
+      say(429, "Try again in " + Math.ceil((f.until - Date.now()) / 1000) + "s.");
+      return;
+    }
+    var uid = (iu.value || "").trim().toLowerCase();
+    var pw = ip.value || "";
+    if (!uid || !pw) { say(401); return; }
+
+    var user = USERS.filter(function (x) { return x.u === uid; })[0];
+    go.disabled = true;
+    say(100, "Checking\u2026");
+    msg.className = "dda-msg";
+    msg.innerHTML = '<span class="code">\u2026</span>Checking. This can take a few seconds on a phone.';
+
+    var t0 = Date.now();
+    var work = user ? DDC.derive(pw, user.s, user.i)
+                    : DDC.derive(pw, "00000000000000000000000000000000", 50000); // same cost when the id is unknown
+
+    work.then(function (hex) {
+      go.disabled = false;
+      ip.value = "";
+      if (!user) { failBump(); say(401); logEvent(uid, "login_fail", 401, ""); return; }
+      if (!DDC.equal(hex, user.h)) { failBump(); say(402); logEvent(uid, "login_fail", 402, ""); return; }
+      if (user.st !== "active") { say(403); logEvent(uid, "login_blocked", 403, user.st); return; }
+      if (user.exp && new Date(user.exp + "T23:59:59") < new Date()) {
+        say(404); logEvent(uid, "login_blocked", 404, user.exp); return;
+      }
+      if (user.rot) { say(405); logEvent(uid, "login_blocked", 405, ""); return; }
+      failClear();
+      sessionStart(user);
+      openApp(user, 100);
+      // Ask once per device, ever. After that the + DEVICE KEY chip is the only offer.
+      if (pkAvailable() && !pkStored() && !pkAsked()) {
+        pkMarkAsked();
+        setTimeout(function () {
+          if (confirm("Set up a device key on this phone?\n\nFace ID, Touch ID or a hardware key instead of " +
+                      "typing your passphrase next time. It stays on this device only.\n\n" +
+                      "You will not be asked again \u2014 the + DEVICE KEY button stays available if you " +
+                      "change your mind.")) window.ddEnrollKey();
+        }, 700);
+      }
+    }).catch(function () {
+      go.disabled = false;
+      say(500); logEvent(uid, "login_error", 500, "");
+    });
+    meta.textContent = "";
+    void t0;
+  }
+
+  if (go) go.addEventListener("click", attempt);
+  if (ip) ip.addEventListener("keydown", function (e) { if (e.key === "Enter") attempt(); });
+  if (iu) iu.addEventListener("keydown", function (e) { if (e.key === "Enter") ip.focus(); });
+
+  ["click", "keydown", "pointerdown"].forEach(function (ev) {
+    document.addEventListener(ev, function () { sessionTouch(); }, true);
+  });
+
+  var s0 = sessionRead();
+  if (s0 && s0.expired) {
+    document.documentElement.style.overflow = "hidden";
+    say(s0.expired);
+    logEvent(null, "session_end", s0.expired, "");
+  } else if (s0) {
+    var u0 = USERS.filter(function (x) { return x.u === s0.u; })[0];
+    if (u0 && u0.st === "active" && !u0.rot) { openApp(u0, 200); }
+    else { lsDel(SKEY); document.documentElement.style.overflow = "hidden"; }
+  } else {
+    document.documentElement.style.overflow = "hidden";
+    if (iu) setTimeout(function () { try { iu.focus(); } catch (e) {} }, 150);
+  }
+  refreshKeyBtn();
+  pkProbe();
+  meta.textContent = "PBKDF2-SHA256 \u00b7 50,000 rounds \u00b7 " + USERS.length + " accounts \u00b7 " +
+    SESSION_HOURS + "h session, " + IDLE_MIN + "min idle";
+})();
+
+
+</script>
+</body>
+</html>

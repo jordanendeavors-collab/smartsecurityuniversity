@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Security University — AAA Smart Security</title>
+<meta name="description" content="Training and certification for AAA Smart Security dealers and technicians.">
+<meta name="theme-color" content="#0B1F3A">
+<style>
+/* ============================================================
+   PUBLIC FRONT SITE. No login, no member data, no pricing.
+   Edit the LINKS block in the script to point at your hosted tools.
+   ============================================================ */
+:root{
+  --navy:#0B1F3A; --navy-d:#08182E; --gold:#C8A951; --red:#CC0000;
+  --bg:#F4F6F9; --panel:#FFFFFF; --panel2:#EEF1F6; --ink:#12181F; --muted:#45525F; --line:#D3D9E2;
+  --shadow:0 1px 2px rgba(11,31,58,.10),0 10px 30px rgba(11,31,58,.07);
+  --hdr:Cambria,"Palatino Linotype",Georgia,"Times New Roman",serif;
+  --body:Calibri,"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#070D16; --panel:#0F1826; --panel2:#162133; --ink:#E9EEF6; --muted:#9FB0C6; --line:#26344A;
+  --gold:#D9BE6A; --red:#FF4646;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.4);}}
+:root[data-theme="dark"]{
+  --bg:#070D16; --panel:#0F1826; --panel2:#162133; --ink:#E9EEF6; --muted:#9FB0C6; --line:#26344A;
+  --gold:#D9BE6A; --red:#FF4646;
+  --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 30px rgba(0,0,0,.4);}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth;padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:var(--hdr);margin:0 0 .4em;line-height:1.2}
+h1{font-size:2.1rem}h2{font-size:1.5rem}h3{font-size:1.08rem}
+p{margin:0 0 1em}
+a{color:var(--red)}
+.wrap{max-width:980px;margin:0 auto;padding:0 18px}
+
+header.top{background:var(--navy);color:#fff;border-bottom:4px solid var(--red);position:sticky;top:0;z-index:40}
+.top-in{max-width:980px;margin:0 auto;padding:11px 18px;display:flex;gap:12px;align-items:center}
+.tile{width:44px;height:44px;flex:0 0 44px;border-radius:9px;background:var(--red);border:1.5px solid var(--gold);
+  display:grid;place-items:center;font-family:var(--hdr);font-weight:700;font-size:.8rem;letter-spacing:.5px}
+.top h2{font-size:1rem;margin:0;color:#fff;font-family:var(--body);font-weight:700}
+.top .s{font-size:.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.navbtns{margin-left:auto;display:flex;gap:8px;align-items:center}
+.tbtn{background:transparent;border:1px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;
+  padding:8px 11px;font-size:.78rem;font-family:var(--body);cursor:pointer}
+.signin{background:var(--gold);border:1px solid var(--gold);color:#0B1F3A;font-weight:700;
+  border-radius:8px;padding:9px 15px;font-size:.84rem;text-decoration:none;white-space:nowrap}
+
+.hero{background:linear-gradient(180deg,var(--navy-d),var(--navy));color:#fff;padding:52px 0 46px}
+.hero .wrap{max-width:820px}
+.kicker{font-size:.72rem;letter-spacing:2.4px;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:10px}
+.hero h1{color:#fff;max-width:17ch}
+.hero p{color:#C3CDDE;font-size:1.1rem;max-width:58ch}
+.ctarow{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.cta{display:inline-block;padding:14px 22px;border-radius:11px;font-weight:700;text-decoration:none;font-size:1rem}
+.cta.primary{background:var(--gold);color:#0B1F3A;border:1px solid var(--gold)}
+.cta.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+.herofoot{margin-top:20px;font-size:.82rem;color:#8FA0BC}
+
+section{padding:44px 0}
+section.alt{background:var(--panel2)}
+.lead{font-size:1.05rem;color:var(--muted);max-width:62ch}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:22px}
+@media(min-width:700px){.grid.c2{grid-template-columns:1fr 1fr}.grid.c3{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
+.card h3{margin-bottom:.3em}
+.card p{margin:0;color:var(--muted);font-size:.94rem}
+.num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--navy);
+  color:#fff;font-family:var(--hdr);font-weight:700;font-size:.9rem;margin-bottom:10px}
+:root[data-theme="dark"] .num,:root:not([data-theme="light"]) .num{background:var(--gold);color:#08111f}
+.rule{height:3px;width:62px;background:var(--gold);border-radius:2px;margin:0 0 18px}
+ul.tick{list-style:none;padding:0;margin:18px 0 0}
+ul.tick li{position:relative;padding-left:28px;margin-bottom:11px;color:var(--muted)}
+ul.tick li:before{content:"";position:absolute;left:4px;top:9px;width:9px;height:9px;border-radius:50%;
+  background:var(--gold)}
+ul.tick li b{color:var(--ink)}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:0;margin-bottom:9px;overflow:hidden}
+summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:.97rem;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";float:right;color:var(--gold);font-size:1.2rem;line-height:1}
+details[open] summary:after{content:"\2013"}
+details .body{padding:0 16px 15px;color:var(--muted);font-size:.94rem}
+.band{background:var(--navy);color:#fff;padding:40px 0;text-align:center}
+.band h2{color:#fff}
+.band p{color:#C3CDDE;max-width:52ch;margin:0 auto 20px}
+footer{background:var(--navy-d);color:#8FA0BC;padding:30px 0 44px;font-size:.8rem;line-height:1.6}
+footer b{color:var(--gold)}
+footer .legal{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);font-size:.74rem}
+.note{background:var(--panel);border-left:4px solid var(--gold);border-radius:0 10px 10px 0;padding:13px 16px;
+  margin-top:20px;font-size:.92rem;color:var(--muted)}
+.note b{color:var(--ink)}
+</style>
+</head>
+<body>
+
+<header class="top"><div class="top-in">
+  <div class="tile">AAA</div>
+  <div><h2>Smart Security University</h2><div class="s">AAA Smart Security</div></div>
+  <div class="navbtns">
+    <button class="tbtn" id="themeBtn" type="button">Dark</button>
+    <a class="signin" id="signinTop" href="#">Dealer Sign In</a>
+  </div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <div class="kicker">Dealer &amp; Technician Training</div>
+  <h1>Certified before the first door.</h1>
+  <p>Smart Security University is where AAA Smart Security dealers and technicians get trained, certified
+  and cleared to work. Five modules, one exam, and a standard that does not move.</p>
+  <div class="ctarow">
+    <a class="cta primary" id="signinHero" href="#">Dealer Sign In</a>
+    <a class="cta ghost" href="#how">How it works</a>
+    <a class="cta ghost" id="pwLink" href="#">Installing Dealer Paperwork</a>
+  </div>
+  <div class="herofoot">Already onboarding? Sign in and pick up exactly where you stopped.</div>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <div class="kicker" style="color:var(--red)">The path</div>
+  <h2>Four steps, in this order</h2><div class="rule"></div>
+  <p class="lead">Training and paperwork run alongside each other. Neither one waits on the other, and only
+  the final exam is a hard gate.</p>
+  <div class="grid c2">
+    <div class="card"><div class="num">1</div><h3>Profile and attestation</h3>
+      <p>Who you are, which dealer number you work under, and your agreement to the standards we hold. Two minutes.</p></div>
+    <div class="card"><div class="num">2</div><h3>Five training modules</h3>
+      <p>Members First, Canvas &rarr; Convert &rarr; Cultivate, compliance guardrails, scope limits, and field safety.
+      Each ends with a knowledge check at 80%. Unlimited retakes, any order, any sitting.</p></div>
+    <div class="card"><div class="num">3</div><h3>Paperwork</h3>
+      <p>Request your new dealer packet from inside the portal and print the checklist. Work through it while the
+      training continues. Nothing here blocks anything there.</p></div>
+    <div class="card"><div class="num">4</div><h3>Certification exam</h3>
+      <p>Twenty questions, 80% to pass, two attempts. Pass it and your record goes to National Field Operations,
+      then your Territory Manager clears you for ride-alongs.</p></div>
+  </div>
+  <div class="note"><b>Roughly 45 to 60 minutes of training</b>, and you do not have to do it in one go.
+  Your progress saves as you work and follows you to whatever device you sign in from next.</div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="kicker" style="color:var(--red)">What you will need</div>
+  <h2>Have these ready</h2><div class="rule"></div>
+  <ul class="tick">
+    <li><b>Your dealer number.</b> If you do not have one yet, your Territory Manager issues it.</li>
+    <li><b>Your sign-in.</b> Issued to you personally by National Field Operations. Never shared between people.</li>
+    <li><b>A phone, tablet or laptop.</b> The portal works on all three. A phone is enough.</li>
+    <li><b>Your packet items.</b> W-9, the executed dealer agreement, certificate of insurance, and licence or
+      registration verification for every state you work in. The portal prints the full checklist for you.</li>
+  </ul>
+  <div class="note"><b>Nothing sensitive goes through the portal.</b> Taxpayer identification numbers, banking
+  details and signed agreements are returned through the secure channel named in your packet &mdash; never by
+  text, never by email.</div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="kicker" style="color:var(--red)">The standard</div>
+  <h2>What we train, and why it is not negotiable</h2><div class="rule"></div>
+  <p class="lead">Every module exists because getting it wrong costs a member, a licence, or somebody's safety.</p>
+  <div class="grid c3">
+    <div class="card"><h3>Wellbeing before business</h3>
+      <p>Every member contact opens the same way: are you safe, are you in a secure location, is everything okay.
+      Never with billing, never with an account, never with a price.</p></div>
+    <div class="card"><h3>Member information stays out</h3>
+      <p>No names, addresses, account numbers or panel codes in any field tool or field photo. Identity lives in
+      the system of record, nowhere else.</p></div>
+    <div class="card"><h3>Four questions you never answer</h3>
+      <p>Code requirements, licensing, contract language, and anything reading as a permit or ordinance issue.
+      Each one routes to the team that owns it.</p></div>
+    <div class="card"><h3>Canvas &rarr; Convert &rarr; Cultivate</h3>
+      <p>One doctrine, one wording. Permission first, needs before product, and the job is not finished at sign-off.</p></div>
+    <div class="card"><h3>Scope discipline</h3>
+      <p>Know where your authority stops. Anything past it gets escalated with a named owner and a due date, the
+      same day, before anything is quoted.</p></div>
+    <div class="card"><h3>Field safety</h3>
+      <p>You get one body and one reputation. Both are protected before the schedule is.</p></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="kicker" style="color:var(--red)">Questions</div>
+  <h2>Before you ask</h2><div class="rule"></div>
+  <details><summary>How long does the whole thing take?</summary><div class="body">
+    Around 45 to 60 minutes of training, plus however long your paperwork takes to gather. Most people spread it
+    across two or three sittings. There is no time limit and no penalty for stopping.</div></details>
+  <details><summary>What if I fail a knowledge check?</summary><div class="body">
+    Retake it. There is no limit on module checks, and wrong answers show you the correct one and the reason.
+    The final certification exam allows two attempts; after that it becomes a coaching conversation with Field
+    Development, not a strike.</div></details>
+  <details><summary>Do I need internet the whole time?</summary><div class="body">
+    You need it to sign in and to save progress. The field tools you use afterwards are built to keep working
+    with no signal at all, which is the point of them.</div></details>
+  <details><summary>Can I do the paperwork and the training at the same time?</summary><div class="body">
+    Yes, and that is how it is designed. Paperwork is open from the moment your profile is saved. The only thing
+    that waits is the final exam, which opens once all five modules are passed.</div></details>
+  <details><summary>I have not got a sign-in yet.</summary><div class="body">
+    Your Territory Manager or National Field Operations issues it to you personally. Accounts are never shared
+    between people and are never sent by text or email.</div></details>
+  <details><summary>Something is not working.</summary><div class="body">
+    Every message in the portal carries a code. Read the code to whoever is helping you rather than describing
+    what happened &mdash; it tells us exactly what went wrong.</div></details>
+</div></section>
+
+<div class="band"><div class="wrap">
+  <h2>Ready to start?</h2>
+  <p>Sign in with the account issued to you. If you are partway through, you will land exactly where you stopped.</p>
+  <a class="cta primary" id="signinBand" href="#">Dealer Sign In</a>
+</div></div>
+
+<footer><div class="wrap">
+  <div><b>Smart Security University</b> &middot; AAA Smart Home Security &middot; AAA Smart Business Security</div>
+  <div style="margin-top:6px">Mountain West Group &middot; National Field Operations</div>
+  <div class="legal">
+    This site describes an internal training and certification programme for authorised dealers and technicians.
+    It is not an offer, a solicitation, or a representation of licensure in any jurisdiction. Licensing
+    requirements differ by state, county and municipality; licensing questions route to Compliance and contract
+    questions route to legal review. Where any code, standard or ordinance is referenced in training, the
+    Authority Having Jurisdiction has final say. No member information is collected on this page.
+  </div>
+</div></footer>
+
+<script>
+(function () {
+  "use strict";
+  /* ---------------------------------------------------------------
+     EDIT THESE. Point at wherever you host the tools.
+     Keep the portal on the same domain as this page where you can.
+     --------------------------------------------------------------- */
+  var LINKS = {
+    portal:    "https://claude.ai/artifact/WDbKS8bha31ZhpAuJiPGoE",  // SSU Onboarding Portal
+    hub:       "https://claude.ai/artifact/V1hTSNQka1QDn8Q6bjmafT",  // Field Hub
+    paperwork: "https://claude.ai/artifact/Rkg4kujuAueZgBdRAoykL1",  // Onsite Paperwork
+    intake:    "https://claude.ai/artifact/6zessZLKmnRkJrtRAKS4zE",  // Commercial Sales Intake
+    help:      "mailto:"                                             // set a Field Ops address
+  };
+
+  var pw = document.getElementById("pwLink");
+  if (pw) { pw.href = LINKS.paperwork; pw.rel = "noopener"; }
+
+  ["signinTop", "signinHero", "signinBand"].forEach(function (id) {
+    var a = document.getElementById(id);
+    if (a) { a.href = LINKS.portal; a.rel = "noopener"; }
+  });
+
+  var root = document.documentElement, b = document.getElementById("themeBtn");
+  function set(t) {
+    root.setAttribute("data-theme", t);
+    b.textContent = (t === "dark") ? "Light" : "Dark";
+    try { localStorage.setItem("ssu.site.theme", t); } catch (e) {}
+  }
+  try {
+    var v = localStorage.getItem("ssu.site.theme");
+    if (v === "dark" || v === "light") set(v);
+    else b.textContent = (root.getAttribute("data-theme") === "dark") ? "Light" : "Dark";
+  } catch (e) {}
+  b.addEventListener("click", function () {
+    set(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+})();
+</script>
+</body>
+</html>
